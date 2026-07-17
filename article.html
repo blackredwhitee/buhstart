@@ -1,18 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>УСН в 2026 году: лимиты, ставки и что изменилось — Доверительная Бухгалтерия</title>
+<meta name="description" content="Разбираем главные изменения УСН с 2026 года: лимиты доходов, ставки НДС и чек-лист на конец квартала.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23F07828'/%3E%3Ctext x='50' y='63' font-size='36' font-weight='800' font-family='sans-serif' fill='%23fff' text-anchor='middle'%3E%D0%94%D0%91%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<x-dc>
-<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
-<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A">
-<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-header__logo"><img src="assets/logo.png" alt="Доверительная Бухгалтерия"></a>
+    <nav class="site-header__nav m-hide">
+      <a href="uslugi.html" class="nav-link hv-orange">Услуги</a>
+      <a href="calculator.html" class="nav-link hv-orange">Калькулятор</a>
+      <a href="blog.html" class="nav-link hv-orange">Статьи</a>
+      <a href="team.html" class="nav-link hv-orange">Команда</a>
+      <a href="contacts.html" class="nav-link hv-orange">Контакты</a>
+    </nav>
+    <a href="tel:+74957788168" class="site-header__phone m-hide hv-orange">+7 (495) 778-81-68</a>
+    <a href="contacts.html#form" class="btn btn--primary btn--sm m-hide hv-primary">Записаться</a>
+    <button class="site-header__burger d-hide" id="burgerBtn" aria-label="Открыть меню">
+      <svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 6h16M3 11h16M3 16h16" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <div class="mobile-menu__top">
+    <img src="assets/logo.png" alt="Доверительная Бухгалтерия">
+    <button class="mobile-menu__close" data-close-menu aria-label="Закрыть меню">
+      <svg width="20" height="20" viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__nav">
+    <a href="index.html" data-close-menu>Главная</a>
+    <a href="uslugi.html" data-close-menu>Услуги</a>
+    <a href="calculator.html" data-close-menu>Калькулятор</a>
+    <a href="blog.html" data-close-menu>Статьи</a>
+    <a href="team.html" data-close-menu>Команда</a>
+    <a href="contacts.html" data-close-menu>Контакты</a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a href="tel:+74957788168">+7 (495) 778-81-68</a>
+    <a href="contacts.html#form" data-close-menu>Записаться на консультацию</a>
+  </div>
+</div>
+<div class="sticky-bar d-hide" id="stickyBar">
+  <a href="contacts.html#form">Записаться</a>
+  <a href="tel:+74957788168" aria-label="Позвонить">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="#3D3D3D" stroke-width="2" stroke-linejoin="round"></path></svg>
+  </a>
+</div>
 
 <section style="max-width:1100px;margin:0 auto;padding:52px 24px 0">
-  <div style="font-size:13px;color:#6B6B6B;margin-bottom:18px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / <a href="blog.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Статьи</a> / УСН в 2026 году</div>
+  <div style="font-size:13px;color:#6B6B6B;margin-bottom:18px"><a href="index.html" class="hv-orange" style="color:#6B6B6B;text-decoration:none">Главная</a> / <a href="blog.html" class="hv-orange" style="color:#6B6B6B;text-decoration:none">Статьи</a> / УСН в 2026 году</div>
   <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;margin-bottom:16px">УСН</span>
   <h1 style="margin:0 0 18px;font-size:42px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;max-width:800px">УСН в 2026 году: лимиты, ставки и что изменилось</h1>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
@@ -21,8 +64,7 @@
   </div>
   <div style="height:340px;background:#3D3D3D;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:64px;font-weight:800;margin-bottom:48px">УСН</div>
 </section>
-
-<section style="max-width:1100px;margin:0 auto;padding:0 24px 72px;display:grid;grid-template-columns:1fr 320px;gap:56px;align-items:start">
+<section class="m-1col" style="max-width:1100px;margin:0 auto;padding:0 24px 72px;display:grid;grid-template-columns:1fr 320px;gap:56px;align-items:start">
   <article style="font-size:16px;line-height:1.7;color:#3D3D3D;max-width:680px">
     <p style="margin:0 0 18px;font-size:18px;color:#1A1A1A">С 2026 года упрощённая система налогообложения работает по обновлённым правилам. Разбираем главные изменения и что делать, чтобы не слететь с режима.</p>
     <h2 id="a1" style="margin:36px 0 14px;font-size:26px;font-weight:700;color:#1A1A1A;letter-spacing:-0.01em">Новые лимиты доходов</h2>
@@ -45,51 +87,95 @@
     <div style="border:1px solid #E8E8E8;border-radius:10px;padding:22px">
       <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6B6B6B;margin-bottom:12px">Оглавление</div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <a href="#a1" style="font-size:14px;color:#3D3D3D;text-decoration:none" style-hover="color:#F07828">Новые лимиты доходов</a>
-        <a href="#a2" style="font-size:14px;color:#3D3D3D;text-decoration:none" style-hover="color:#F07828">Ставки и обязанность по НДС</a>
-        <a href="#a3" style="font-size:14px;color:#3D3D3D;text-decoration:none" style-hover="color:#F07828">Что сделать до конца квартала</a>
+        <a href="#a1" class="hv-orange" style="font-size:14px;color:#3D3D3D;text-decoration:none">Новые лимиты доходов</a>
+        <a href="#a2" class="hv-orange" style="font-size:14px;color:#3D3D3D;text-decoration:none">Ставки и обязанность по НДС</a>
+        <a href="#a3" class="hv-orange" style="font-size:14px;color:#3D3D3D;text-decoration:none">Что сделать до конца квартала</a>
       </div>
     </div>
     <div style="background:#3D3D3D;border-radius:10px;padding:24px;color:#fff">
       <div style="font-size:17px;font-weight:700;margin-bottom:8px">Нужна помощь с УСН?</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:16px">Посчитаем вашу нагрузку и подберём оптимальный режим.</div>
-      <a href="usluga.dc.html?s=nalogovoe-konsultirovanie" style="text-decoration:none;background:#F07828;color:#fff;font-weight:600;font-size:14px;height:44px;padding:0 20px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#E56800">Записаться на консультацию</a>
+      <a href="usluga.html?s=bukhgalterskie-uslugi" class="hv-submit" style="text-decoration:none;background:#F07828;color:#fff;font-weight:600;font-size:14px;height:44px;padding:0 20px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease">Записаться на консультацию</a>
     </div>
   </aside>
 </section>
-
 <section style="background:#F5F5F5;border-top:1px solid #E8E8E8">
   <div style="max-width:1100px;margin:0 auto;padding:64px 24px">
     <h2 style="margin:0 0 28px;font-size:28px;font-weight:800;letter-spacing:-0.02em">Похожие статьи</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-      <sc-for list="{{ related }}" as="p" hint-placeholder-count="3">
-        <a href="article.dc.html" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease" style-hover="box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px)">
-          <div style="height:140px;background:{{ p.cover }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800">{{ p.glyph }}</div>
+    <div class="m-1col t-2col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <a href="article.html" class="hv-card" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease">
+          <div style="height:140px;background:#F07828;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800">НДС</div>
           <div style="padding:16px 18px">
-            <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:10px">{{ p.tag }}</span>
-            <div style="font-size:15px;font-weight:600;line-height:1.4">{{ p.title }}</div>
+            <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:10px">ОСНО</span>
+            <div style="font-size:15px;font-weight:600;line-height:1.4">НДС 22%: как подготовиться к новой ставке</div>
           </div>
         </a>
-      </sc-for>
+      <a href="article.html" class="hv-card" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease">
+          <div style="height:140px;background:#6B6B6B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800">ЕФС</div>
+          <div style="padding:16px 18px">
+            <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:10px">Отчётность</span>
+            <div style="font-size:15px;font-weight:600;line-height:1.4">ЕФС-1: полный календарь сдачи на 2026 год</div>
+          </div>
+        </a>
+      <a href="article.html" class="hv-card" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease">
+          <div style="height:140px;background:#3D3D3D;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800">ВЭД</div>
+          <div style="padding:16px 18px">
+            <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:10px">ВЭД</span>
+            <div style="font-size:15px;font-weight:600;line-height:1.4">Валютный контроль для ИП: пошаговая инструкция</div>
+          </div>
+        </a>
     </div>
   </div>
 </section>
 
-<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      related: [
-        { tag: 'ОСНО', cover: '#F07828', glyph: 'НДС', title: 'НДС 22%: как подготовиться к новой ставке' },
-        { tag: 'Отчётность', cover: '#6B6B6B', glyph: 'ЕФС', title: 'ЕФС-1: полный календарь сдачи на 2026 год' },
-        { tag: 'ВЭД', cover: '#3D3D3D', glyph: 'ВЭД', title: 'Валютный контроль для ИП: пошаговая инструкция' },
-      ],
-    };
-  }
-}
-</script>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div>
+        <img src="assets/logo.png" alt="Доверительная Бухгалтерия" class="site-footer__logo">
+        <p style="margin:0 0 16px;font-size:13px;line-height:1.65">Бухгалтерское сопровождение для ИП и ООО. Работаем удалённо по всей России с 2003 года.</p>
+        <div style="display:flex;gap:10px">
+          <a href="https://t.me/Galina_Gor" class="hv-border-orange" style="min-width:44px;height:44px;border:1px solid rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;text-decoration:none">TG</a>
+          <a href="https://wa.me/79169179274" class="hv-border-orange" style="min-width:44px;height:44px;border:1px solid rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;text-decoration:none">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <button class="footer-col__head"><span class="footer-col__title">Услуги</span><span class="footer-col__mark d-hide">+</span></button>
+        <div class="footer-col__body">
+          <a href="usluga.html?s=bukhgalterskie-uslugi" class="hv-footer-item">Бухгалтерские услуги</a>
+          <a href="usluga.html?s=strahovka" class="hv-footer-item">Бухгалтерская страховка</a>
+          <a href="usluga.html?s=audit" class="hv-footer-item">Аудит — чек-ап бизнеса</a>
+          <a href="usluga.html?s=upravlencheskii-uchet" class="hv-footer-item">Управленческий учёт</a>
+          <a href="usluga.html?s=marketplace" class="hv-footer-item">Бухгалтерия для маркетплейсов</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <button class="footer-col__head"><span class="footer-col__title">Компания</span><span class="footer-col__mark d-hide">+</span></button>
+        <div class="footer-col__body">
+          <a href="team.html" class="hv-footer-item">Команда</a>
+          <a href="contacts.html" class="hv-footer-item">Контакты</a>
+          <a href="blog.html" class="hv-footer-item">Статьи</a>
+          <a href="novosti.html" class="hv-footer-item">Новости</a>
+          <a href="calculator.html" class="hv-footer-item">Калькулятор</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <button class="footer-col__head"><span class="footer-col__title">Контакты</span><span class="footer-col__mark d-hide">+</span></button>
+        <div class="footer-col__body">
+          <a href="tel:+74957788168" class="hv-footer-item" style="color:#fff;font-weight:600;font-size:15px">+7 (495) 778-81-68</a>
+          <a href="mailto:info@buhstart.ru" class="hv-footer-item">info@buhstart.ru</a>
+          <span>Москва, Краснопрудная 12/1, стр. 1</span>
+          <span>Пн–Пт 9:00–19:00</span>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 ООО «Профит-консалт» — Доверительная Бухгалтерия</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap"><a href="privacy.html" class="hv-footer-item">Политика конфиденциальности</a><a href="soglasie.html" class="hv-footer-item">Согласие на обработку ПДн</a></span>
+      <span>ИНН 7709792856 · ОГРН 1087746623095</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
 </body>
 </html>
