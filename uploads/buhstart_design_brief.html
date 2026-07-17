@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buhstart — Дизайн-бриф</title>
+<style>
+  :root {
+    --navy: #1A2440;
+    --orange: #C4612C;
+    --orange-light: #E8845A;
+    --warm-white: #F6F4F0;
+    --warm-mid: #EAE7E1;
+    --text: #1A1A1A;
+    --text-muted: #5A5A5A;
+    --border: #D6D2CB;
+    --code-bg: #F0EDE8;
+    --green: #2D7A4F;
+    --red: #C0392B;
+    --yellow: #E8A020;
+    --bg: var(--warm-white);
+    --surface: #FFFFFF;
+    --surface2: var(--warm-mid);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111318;
+      --surface: #1C2030;
+      --surface2: #252A3A;
+      --text: #E8E4DD;
+      --text-muted: #8A8888;
+      --border: #2E3348;
+      --code-bg: #1E2235;
+      --warm-white: #111318;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F4F0;
+    --surface: #FFFFFF;
+    --surface2: #EAE7E1;
+    --text: #1A1A1A;
+    --text-muted: #5A5A5A;
+    --border: #D6D2CB;
+    --code-bg: #F0EDE8;
+  }
+  :root[data-theme="dark"] {
+    --bg: #111318;
+    --surface: #1C2030;
+    --surface2: #252A3A;
+    --text: #E8E4DD;
+    --text-muted: #8A8888;
+    --border: #2E3348;
+    --code-bg: #1E2235;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    color: #fff;
+    padding: 72px 64px 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+    min-height: 280px;
+  }
+  .cover-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .cover-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+  }
+  .cover-meta {
+    text-align: right;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+  }
+  .cover-accent {
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .cover-stripe {
+    height: 4px;
+    background: var(--orange);
+    margin-top: 32px;
+    width: 60px;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 64px;
+  }
+  .toc h2 {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px 32px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 0;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+  .toc-item:hover { color: var(--orange); }
+  .toc-num {
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 700;
+    min-width: 20px;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* SECTION */
+  .section {
+    padding: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:nth-child(even) { background: var(--surface); }
+  .section:nth-child(odd) { background: var(--bg); }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.05em;
+    min-width: 32px;
+  }
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-left: auto;
+    max-width: 300px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 32px 0 12px;
+    letter-spacing: -0.01em;
+  }
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 24px 0 8px;
+  }
+  p { margin-bottom: 12px; }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .num {
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .card p { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .tag-cta { background: #FEF0E6; color: #B84F1A; }
+  .tag-emotion { background: #EBF5EE; color: #1E6B3A; }
+  .tag-note { background: #FFF7E6; color: #8A6000; }
+  .tag-nav { background: #E8ECF6; color: #1A2440; }
+
+  /* SITEMAP */
+  .sitemap-tree { margin: 24px 0; }
+  .sitemap-page {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  .sitemap-children {
+    margin-left: 32px;
+    border-left: 2px solid var(--border);
+    padding-left: 20px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+  }
+  .sitemap-child {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 4px;
+    margin-right: 8px;
+  }
+  .sitemap-leaf {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+  .sitemap-leaf::before { content: "└ "; }
+
+  /* PAGE BLOCK */
+  .page-block {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .page-block-header {
+    background: var(--surface2);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .page-block-body {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  .page-block-body p { color: var(--text-muted); margin-bottom: 4px; }
+  .page-block-body .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* COLOR SWATCHES */
+  .palette { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .swatch {
+    width: 80px;
+    text-align: center;
+  }
+  .swatch-color {
+    height: 56px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 6px;
+  }
+  .swatch-name { font-size: 11px; font-weight: 600; }
+  .swatch-hex { font-size: 10px; color: var(--text-muted); font-family: monospace; }
+
+  /* TYPE SCALE */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-label { font-size: 11px; color: var(--text-muted); min-width: 60px; }
+  .type-spec { font-size: 11px; color: var(--orange); font-family: monospace; min-width: 200px; }
+
+  /* SCENARIO */
+  .scenario {
+    border-left: 3px solid var(--orange);
+    padding-left: 20px;
+    margin-bottom: 28px;
+  }
+  .scenario-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .scenario-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .step-n {
+    background: var(--orange);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* COMPONENT SPECS */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+  .comp-table th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--surface2);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+
+  /* REFERENCE */
+  .ref-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+  }
+  .ref-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .ref-url { font-size: 11px; color: var(--text-muted); font-family: monospace; margin-bottom: 8px; }
+  .ref-take { font-size: 13px; color: var(--text-muted); }
+  .ref-take strong { color: var(--text); }
+
+  /* NOTICE */
+  .notice {
+    background: #FFF7E6;
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin: 16px 0;
+    color: #6B4800;
+  }
+  .notice-crit {
+    background: #FEF0E6;
+    border-left-color: var(--orange);
+    color: #6B2200;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  pre {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 12px 0;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  @media (max-width: 800px) {
+    .cover { padding: 40px 24px 32px; grid-template-columns: 1fr; }
+    .cover-meta { text-align: left; }
+    .toc { padding: 28px 24px; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 40px 24px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .section-desc { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="cover-label">UX Lead Handoff Document · Версия 1.0</div>
+    <h1>Buhstart<br><span class="cover-accent">Дизайн-бриф</span></h1>
+    <div class="cover-sub">Полное техническое задание для дизайнера<br>на разработку нового сайта бухгалтерской компании</div>
+    <div class="cover-stripe"></div>
+  </div>
+  <div class="cover-meta">
+    Дата: 16 июля 2026<br>
+    Стек: Next.js 14 · TypeScript<br>
+    CMS: Sanity.io<br>
+    CRM: Битрикс24<br>
+    Хостинг: Vercel / Selectel<br>
+    <br>
+    <strong style="color:rgba(255,255,255,0.7)">8 разделов · Самодостаточный документ</strong>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Содержание</h2>
+  <div class="toc-grid">
+    <a href="#s1" class="toc-item"><span class="toc-num">01</span> Карта сайта</a>
+    <a href="#s2" class="toc-item"><span class="toc-num">02</span> Структура страниц</a>
+    <a href="#s3" class="toc-item"><span class="toc-num">03</span> Главная подробно</a>
+    <a href="#s4" class="toc-item"><span class="toc-num">04</span> UI Kit</a>
+    <a href="#s5" class="toc-item"><span class="toc-num">05</span> Визуальная концепция</a>
+    <a href="#s6" class="toc-item"><span class="toc-num">06</span> Референсы</a>
+    <a href="#s7" class="toc-item"><span class="toc-num">07</span> Пользовательские сценарии</a>
+    <a href="#s8" class="toc-item"><span class="toc-num">08</span> Мобильная версия</a>
+    <a href="#s9" class="toc-item"><span class="toc-num">09</span> Существующий калькулятор</a>
+  </div>
+</div>
+
+<!-- SECTION 1: SITEMAP -->
+<div class="section" id="s1">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Карта сайта</h2>
+      <div class="section-desc">Иерархия всех страниц, URL-структура, связи между разделами</div>
+    </div>
+
+    <h3>Дерево страниц</h3>
+
+    <div class="sitemap-tree">
+
+      <div><span class="sitemap-page">/ — Главная</span></div>
+      <div class="sitemap-children">
+        <div class="sitemap-leaf">Hero с value proposition</div>
+        <div class="sitemap-leaf">Блок услуг (якорь #uslugi)</div>
+        <div class="sitemap-leaf">Клиентский калькулятор (якорь #calculator)</div>
+        <div class="sitemap-leaf">Команда (якорь #team)</div>
+        <div class="sitemap-leaf">Отзывы Яндекс.Карты</div>
+        <div class="sitemap-leaf">Последние статьи (3 шт.)</div>
+        <div class="sitemap-leaf">Форма записи на консультацию</div>
+      </div>
+
+      <div><span class="sitemap-page">/uslugi — Все услуги</span></div>
+      <div class="sitemap-children">
+        <div style="margin-bottom:8px">
+          <span class="sitemap-child">/uslugi/bukhgalterskoe-obsluzhivanie</span>
+          <span class="sitemap-child">/uslugi/nalogovoe-konsultirovanie</span>
+          <span class="sitemap-child">/uslugi/kadrovyi-uchet</span>
+          <span class="sitemap-child">/uslugi/upravlencheskii-uchet</span>
+          <span class="sitemap-child">/uslugi/ved</span>
+          <span class="sitemap-child">/uslugi/registraciya-i-likvidaciya</span>
+        </div>
+        <div class="sitemap-leaf">Каждая страница услуги: описание → преимущества → что входит → стоимость (диапазон) → FAQ → форма</div>
+      </div>
+
+      <div><span class="sitemap-page">/calculator — Калькулятор</span></div>
+      <div class="sitemap-children">
+        <div class="sitemap-leaf">9-шаговый wizard, результат → форма → лид в Битрикс24</div>
+        <div class="sitemap-leaf">Отдельная страница (дополнительно встроен в главную)</div>
+      </div>
+
+      <div><span class="sitemap-page">/blog — Статьи</span></div>
+      <div class="sitemap-children">
+        <div class="sitemap-leaf">Листинг с фильтрами по тегам (УСН, ОСН, кадры, ВЭД…)</div>
+        <div class="sitemap-leaf">/blog/[slug] — Статья (MDX из Sanity)</div>
+      </div>
+
+      <div><span class="sitemap-page">/novosti — Новости</span></div>
+      <div class="sitemap-children">
+        <div class="sitemap-leaf">Изменения законодательства, дайджесты</div>
+        <div class="sitemap-leaf">/novosti/[slug] — Новость</div>
+      </div>
+
+      <div><span class="sitemap-page">/team — Команда</span></div>
+      <div class="sitemap-children">
+        <div class="sitemap-leaf">Карточки сотрудников с фото, опытом, специализацией</div>
+      </div>
+
+      <div><span class="sitemap-page">/contacts — Контакты</span></div>
+      <div class="sitemap-children">
+        <div class="sitemap-leaf">Единый адрес офиса (!) + Яндекс.Карты iframe</div>
+        <div class="sitemap-leaf">Форма записи, телефон, мессенджеры</div>
+      </div>
+
+      <div><span class="sitemap-page">/privacy — Политика конфиденциальности</span></div>
+
+    </div>
+
+    <h3>Связи между разделами</h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Главная → Услуги</div>
+        <p>Блок услуг на главной — карточки с кнопкой «Подробнее» → /uslugi/[slug]. Якорь #uslugi доступен из хедера.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Калькулятор → Форма</div>
+        <p>После 9 шагов калькулятора результат показывает рекомендованные услуги + кнопку «Обсудить с бухгалтером» → inline-форма с данными из расчёта.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Статьи → Услуги</div>
+        <p>В конце каждой статьи — блок «Нужна помощь?» с CTA на релевантную услугу или форму.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Услуга → Калькулятор</div>
+        <p>На страницах услуг — кнопка «Рассчитать стоимость» → /calculator с предвыбранным параметром услуги через URL-параметр.</p>
+      </div>
+    </div>
+
+    <h3>SEO-замечания</h3>
+    <ul>
+      <li>ЧПУ — только кирилл. транслитерация, не id</li>
+      <li>sitemap.xml генерируется автоматически Next.js + Sanity</li>
+      <li>Все страницы услуг — SSG (статическая генерация), блог — ISR (revalidate: 3600)</li>
+      <li>Мета-теги и OG-изображения управляются через Sanity Studio</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2: PAGE STRUCTURES -->
+<div class="section" id="s2">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Структура каждой страницы</h2>
+      <div class="section-desc">Последовательность блоков, назначение, CTA, эмоция пользователя</div>
+    </div>
+
+    <div class="notice">Главная страница разобрана подробно в разделе 03. Здесь — все остальные страницы.</div>
+
+    <!-- USLUGI INDEX -->
+    <h3>/uslugi — Все услуги</h3>
+
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> Breadcrumb + H1 «Бухгалтерские услуги»</div>
+      <div class="page-block-body"><p>Минимальный, 60px top-padding. Подзаголовок: «Полный цикл бухгалтерского сопровождения — от регистрации до отчётности».</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> Сетка карточек услуг (3 колонки на десктопе)</div>
+      <div class="page-block-body">
+        <p>Каждая карточка: иконка, название, 2-строчный тезис, ссылка «Подробнее». Hover — подъём тени, оранжевая метка.</p>
+        <div class="tags"><span class="tag tag-cta">CTA: подробнее</span></div>
+      </div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 3</span> CTA-баннер «Не знаете что подходит?»</div>
+      <div class="page-block-body">
+        <p>Тёмный фон (navy), большой текст, кнопки: «Пройти калькулятор» и «Позвонить». Разрыв монотонности листинга.</p>
+        <div class="tags"><span class="tag tag-cta">CTA: калькулятор / звонок</span><span class="tag tag-emotion">Эмоция: помощь</span></div>
+      </div>
+    </div>
+
+    <!-- SERVICE PAGE -->
+    <h3 style="margin-top:32px">/uslugi/[slug] — Страница услуги</h3>
+
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> Hero услуги</div>
+      <div class="page-block-body">
+        <p>H1 — название услуги. Подзаголовок — ключевой результат для клиента. Кнопки: «Рассчитать стоимость» (→ калькулятор) и «Записаться на консультацию». Справа — иллюстрация или фото команды за работой.</p>
+        <div class="tags"><span class="tag tag-cta">CTA: рассчитать / записаться</span><span class="tag tag-emotion">Эмоция: уверенность</span></div>
+      </div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> «Что входит в услугу»</div>
+      <div class="page-block-body"><p>Список с иконками-галочками или accordion. 6–10 пунктов. Показывает полноту покрытия.</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 3</span> «Для кого подходит»</div>
+      <div class="page-block-body"><p>3–4 карточки-персонажа: «ИП на УСН», «ООО на ОСНО», «Стартап», «Компания с ВЭД». Поиск себя.</p><div class="tags"><span class="tag tag-emotion">Эмоция: узнавание</span></div></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 4</span> Стоимость (диапазон)</div>
+      <div class="page-block-body"><p>Таблица или карточки тарифов с диапазоном «от X руб/мес». Точная цена — после расчёта в калькуляторе. Подпись «Итоговая стоимость определяется на консультации».</p><div class="tags"><span class="tag tag-note">Без точных цен</span></div></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 5</span> FAQ</div>
+      <div class="page-block-body"><p>5–7 вопросов в accordion. Schema.org FAQPage для SEO.</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 6</span> Форма «Обсудить задачу»</div>
+      <div class="page-block-body"><p>Имя, телефон, вопрос (необязательно). UTM-параметр: откуда пришёл. Лид → Битрикс24.</p><div class="tags"><span class="tag tag-cta">Финальный CTA</span></div></div>
+    </div>
+
+    <!-- CALCULATOR PAGE -->
+    <h3 style="margin-top:32px">/calculator — Калькулятор</h3>
+
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> Мини-hero</div>
+      <div class="page-block-body"><p>H1 «Узнайте, какие услуги вам нужны». Подзаголовок: «9 вопросов — и мы подберём оптимальный пакет под вашу ситуацию». Без упоминания цен.</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> Wizard (9 шагов)</div>
+      <div class="page-block-body">
+        <p><strong>Прогресс-бар</strong> вверху. Один вопрос на экран. Анимация slide-in при переходе между шагами.</p>
+        <p>Шаг 1: Форма собственности (ИП / ООО) — крупные карточки-кнопки<br>
+        Шаг 2: Система налогообложения (УСН 6% / УСН 15% / ОСНО / АУСН / Патент)<br>
+        Шаг 3: Вид деятельности (из выпадающего списка + «Другое»)<br>
+        Шаг 4: Количество операций в месяц (слайдер: &lt;30 / 30–100 / 100–300 / &gt;300)<br>
+        Шаг 5: Число сотрудников (0 / 1–5 / 6–15 / 16+)<br>
+        Шаг 6: Нужен ли кадровый учёт? (Да / Нет / Не знаю)<br>
+        Шаг 7: Нужен ли управленческий учёт? (Да / Нет / Не знаю)<br>
+        Шаг 8: Есть ли ВЭД? (Да / Нет)<br>
+        Шаг 9: Стадия бизнеса (стартую / работаю до 1 года / работаю 1+ лет)</p>
+      </div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 3</span> Экран результата</div>
+      <div class="page-block-body">
+        <p>Список рекомендованных услуг (без цен). Нейтральный заголовок: «Для вашей ситуации подойдут:».</p>
+        <p>Под списком — форма: Имя + Телефон + кнопка «Получить точный расчёт». Лид → Битрикс24 с полными данными расчёта.</p>
+        <div class="tags"><span class="tag tag-cta">CTA: получить расчёт</span><span class="tag tag-emotion">Эмоция: ощущение персонального подхода</span></div>
+      </div>
+    </div>
+
+    <!-- BLOG -->
+    <h3 style="margin-top:32px">/blog — Листинг статей</h3>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> H1 + Фильтры по тегам</div>
+      <div class="page-block-body"><p>Горизонтальные чипы-фильтры: Все / УСН / ОСНО / Кадры / ВЭД / Отчётность / Изменения закона. Активный чип — оранжевый. Фильтрация без перезагрузки страницы (client-side).</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> Сетка статей (2 колонки)</div>
+      <div class="page-block-body"><p>Карточка: обложка (16:9), тег, заголовок, дата, 2 строки анонса, время чтения. Hover — подъём тени.</p></div>
+    </div>
+
+    <!-- BLOG POST -->
+    <h3 style="margin-top:32px">/blog/[slug] — Статья</h3>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> Шапка статьи</div>
+      <div class="page-block-body"><p>Breadcrumb. Тег. H1. Дата, автор (имя + аватар), время чтения. Обложка full-width.</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> Контент + Sidebar</div>
+      <div class="page-block-body"><p>Левая колонка (70%): MDX-контент. Правая (30%, sticky): оглавление + блок «Записаться на консультацию» (появляется после 30% скролла).</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 3</span> Конец статьи</div>
+      <div class="page-block-body"><p>«Нужна помощь с этим вопросом?» — блок с CTA на релевантную услугу. Похожие статьи (3 шт.).</p></div>
+    </div>
+
+    <!-- TEAM -->
+    <h3 style="margin-top:32px">/team — Команда</h3>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> H1 + Вводный текст</div>
+      <div class="page-block-body"><p>«Наша команда — X специалистов с опытом от 5 лет». Подчёркивает людей, а не компанию.</p></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> Сетка сотрудников (3 колонки)</div>
+      <div class="page-block-body"><p>Карточка: живое фото, Имя, должность, специализация (теги), опыт (N лет), краткая цитата. Hover — небольшой зум фото.</p><div class="tags"><span class="tag tag-emotion">Эмоция: доверие к людям</span></div></div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 3</span> CTA «Пообщайтесь с нашим специалистом»</div>
+      <div class="page-block-body"><p>Форма или ссылка на WhatsApp/Telegram.</p></div>
+    </div>
+
+    <!-- CONTACTS -->
+    <h3 style="margin-top:32px">/contacts — Контакты</h3>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 1</span> Два столбца: Реквизиты + Карта</div>
+      <div class="page-block-body">
+        <p>Левый: единственный адрес офиса (!) — крупно, не мелким шрифтом. Телефон, email, мессенджеры. Часы работы.</p>
+        <p>Правый: Яндекс.Карты iframe (полная высота блока, ~400px).</p>
+        <div class="tags"><span class="tag tag-note">ВАЖНО: только 1 адрес на всём сайте</span></div>
+      </div>
+    </div>
+    <div class="page-block">
+      <div class="page-block-header"><span class="tag tag-nav">Блок 2</span> Форма «Записаться на консультацию»</div>
+      <div class="page-block-body"><p>Имя, телефон, желаемое время (datepicker → Битрикс24 calendar.event.add), вопрос.</p></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 3: MAIN PAGE DEEP DIVE -->
+<div class="section" id="s3">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Главная страница — подробно</h2>
+      <div class="section-desc">Каждый блок от первого экрана до футера</div>
+    </div>
+
+    <div class="card" style="border-left: 3px solid var(--navy); margin-bottom: 24px;">
+      <div class="card-title">Контекст: что должна сделать главная страница</div>
+      <p>Посетитель пришёл не знать, чем занимается компания — он уже примерно знает. Он пришёл понять: <em>«Это мой вариант? Им можно доверять? Что делать дальше?»</em> Каждый блок отвечает на один из этих вопросов.</p>
+    </div>
+
+    <!-- HERO -->
+    <div class="card" style="border-top: 3px solid var(--orange);">
+      <div class="card-title"><span class="num">01</span> HERO — первый экран (100vh)</div>
+      <h4>Контент</h4>
+      <p><strong>Eyebrow:</strong> «Бухгалтерское сопровождение в Москве»</p>
+      <p><strong>H1:</strong> «Ваш бизнес — наша зона ответственности» (или «Бухгалтерия без ошибок и штрафов»)</p>
+      <p><strong>Подзаголовок (1-2 строки):</strong> «Профессиональная бухгалтерия для ИП и ООО. Работаем удалённо по всей России. Отвечаем в течение 2 часов.»</p>
+      <p><strong>Кнопки:</strong> «Рассчитать стоимость» (primary, оранжевый) + «Записаться на консультацию» (secondary, обводка)</p>
+      <p><strong>Доверительные метки:</strong> ряд из 3-4 иконок со значениями — «12 лет на рынке» / «350+ клиентов» / «Ответим за 2 часа» / «Гарантируем возврат переплат»</p>
+      <h4>Визуал</h4>
+      <p>Правая половина: живое фото главного бухгалтера или всей команды (не стоковое). Лёгкий фон: тёплый белый с еле заметной текстурой. Navy-блок слева (20%) для контраста, если используется split-layout.</p>
+      <div class="tags"><span class="tag tag-cta">CTA: рассчитать / консультация</span><span class="tag tag-emotion">Эмоция: «Я в правильном месте»</span></div>
+    </div>
+
+    <!-- TRUST BAR -->
+    <div class="card">
+      <div class="card-title"><span class="num">02</span> ДОВЕРИТЕЛЬНАЯ ПОЛОСА (trust bar)</div>
+      <p>Узкий горизонтальный блок (80px высота). Фон: чуть темнее страницы. Логотипы клиентов или партнёров (если есть), или 4-5 иконок с мини-текстом: «1С:Партнёр» / «Член ПНО» / «Страхование ответственности» / «НДС, ВЭД, ОСНО».</p>
+      <p>Если логотипов клиентов нет — строка с key numbers без иконок: <em>«Работаем с 2012 · 350+ клиентов · 0 штрафов по нашей вине»</em></p>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="card">
+      <div class="card-title"><span class="num">03</span> УСЛУГИ — обзорный блок (anchor #uslugi)</div>
+      <p><strong>Заголовок секции:</strong> «Что мы делаем»</p>
+      <p><strong>Сетка:</strong> 3 колонки × 2 строки = 6 карточек услуг.</p>
+      <p>Карточка: тематическая иконка (монолайн, navy), название, 2-3 строки описания, ссылка «Подробнее». Hover: оранжевая подчёркивающая линия снизу карточки + лёгкий подъём.</p>
+      <p><strong>Ниже сетки:</strong> текстовая ссылка «Все услуги →» на /uslugi.</p>
+      <div class="tags"><span class="tag tag-cta">CTA: подробнее по каждой + все услуги</span><span class="tag tag-emotion">Эмоция: «Они закрывают все мои задачи»</span></div>
+    </div>
+
+    <!-- WHY US -->
+    <div class="card">
+      <div class="card-title"><span class="num">04</span> ПОЧЕМУ МЫ — дифференциаторы</div>
+      <p><strong>Фон:</strong> navy (#1A2440), светлый текст — контрастный разрыв страницы.</p>
+      <p><strong>Заголовок:</strong> «Чем мы отличаемся»</p>
+      <p><strong>4 тезиса в 2 колонки:</strong></p>
+      <ul>
+        <li>Персональный бухгалтер — не колл-центр, не чат-бот</li>
+        <li>Гарантия возврата переплаченных налогов</li>
+        <li>Ответ в течение 2 часов в рабочее время</li>
+        <li>Страхование профессиональной ответственности</li>
+      </ul>
+      <p>Каждый тезис: оранжевая иконка-маркер + заголовок + 1-2 строки пояснения.</p>
+      <div class="tags"><span class="tag tag-emotion">Эмоция: «Здесь думают о моих интересах»</span></div>
+    </div>
+
+    <!-- CALCULATOR TEASER -->
+    <div class="card">
+      <div class="card-title"><span class="num">05</span> КАЛЬКУЛЯТОР — тизер (anchor #calculator)</div>
+      <p><strong>Заголовок:</strong> «Подберём услуги под вашу ситуацию»</p>
+      <p><strong>Подзаголовок:</strong> «9 вопросов — и вы узнаете, какое обслуживание подходит именно вашему бизнесу»</p>
+      <p><strong>Два варианта дизайна (на выбор дизайнера):</strong></p>
+      <p>A) Embed первого шага калькулятора прямо в блок — посетитель начинает отвечать без перехода на страницу</p>
+      <p>B) Крупная кнопка «Начать расчёт» + 3 иконки-шага: «Ответьте на вопросы → Получите рекомендации → Обсудите с бухгалтером»</p>
+      <div class="tags"><span class="tag tag-cta">CTA: начать расчёт</span><span class="tag tag-note">Без упоминания цен</span><span class="tag tag-emotion">Эмоция: любопытство, персонализация</span></div>
+    </div>
+
+    <!-- TEAM -->
+    <div class="card">
+      <div class="card-title"><span class="num">06</span> КОМАНДА — тизер (anchor #team)</div>
+      <p><strong>Заголовок:</strong> «Ваши бухгалтеры» (не «О компании»)</p>
+      <p>3-4 карточки ключевых сотрудников: живое фото, имя, должность, специализация, лет опыта. Горизонтальный скролл на мобильном.</p>
+      <p>Под карточками: «Познакомиться с командой →» на /team.</p>
+      <div class="tags"><span class="tag tag-emotion">Эмоция: «Это реальные люди, им можно доверять»</span></div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="card">
+      <div class="card-title"><span class="num">07</span> ОТЗЫВЫ — интеграция Яндекс.Карты</div>
+      <p><strong>Заголовок:</strong> «Что говорят клиенты»</p>
+      <p>Горизонтальный слайдер с карточками отзывов. Каждая карточка: аватар (первая буква имени на цветном фоне), имя, рейтинг (звёзды), дата, текст отзыва.</p>
+      <p>Справа от слайдера (или снизу) — виджет со средним рейтингом: большое число (4.9), N отзывов, логотип Яндекс.Карт, кнопка «Все отзывы».</p>
+      <p><strong>Техническое решение:</strong> отзывы подгружаются через сервер (Next.js Route Handler) от Яндекс API или парсинг — клиент получает готовые данные.</p>
+      <div class="tags"><span class="tag tag-emotion">Эмоция: социальное доказательство</span></div>
+    </div>
+
+    <!-- ARTICLES -->
+    <div class="card">
+      <div class="card-title"><span class="num">08</span> СТАТЬИ — последние 3</div>
+      <p><strong>Заголовок:</strong> «Полезные материалы»</p>
+      <p>3 карточки в ряд. Карточка: обложка, тег, заголовок, дата, 2 строки анонса. Кнопка «Все статьи →» справа от заголовка секции.</p>
+      <p><strong>Важно:</strong> блок только если в Sanity есть минимум 3 опубликованные статьи. Иначе — скрыт.</p>
+      <div class="tags"><span class="tag tag-emotion">Эмоция: «Эти люди разбираются в теме»</span></div>
+    </div>
+
+    <!-- BOOKING -->
+    <div class="card" style="border-bottom: 3px solid var(--orange);">
+      <div class="card-title"><span class="num">09</span> ФОРМА ЗАПИСИ — финальный CTA</div>
+      <p><strong>Фон:</strong> warm-mid (#EAE7E1) или light navy — выделяет как завершение страницы.</p>
+      <p><strong>Заголовок:</strong> «Запишитесь на бесплатную консультацию»</p>
+      <p><strong>Подзаголовок:</strong> «Разберём вашу ситуацию и предложим оптимальное решение. Без обязательств.»</p>
+      <p><strong>Форма:</strong> Имя + Телефон/WhatsApp + Удобное время (datepicker). Кнопка «Записаться».</p>
+      <p><strong>Рядом с формой (или снизу):</strong> «Или напишите нам:» + иконки Telegram / WhatsApp / Телефон</p>
+      <div class="tags"><span class="tag tag-cta">Финальный CTA</span><span class="tag tag-emotion">Эмоция: «Следующий шаг очень простой»</span></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="card" style="margin-top: 16px;">
+      <div class="card-title"><span class="num">10</span> FOOTER</div>
+      <p><strong>Фон:</strong> navy (#1A2440), светлый текст.</p>
+      <p><strong>4 колонки:</strong></p>
+      <ul>
+        <li>Логотип + короткое описание компании (2 строки) + соцсети</li>
+        <li>Услуги (список ссылок)</li>
+        <li>Компания (Команда / Контакты / Блог / Новости)</li>
+        <li>Контакты (адрес, телефон, email, часы работы)</li>
+      </ul>
+      <p><strong>Нижняя строка:</strong> © 2024 Buhstart · Политика конфиденциальности · ИНН/ОГРН</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 4: UI KIT -->
+<div class="section" id="s4">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">UI Kit</h2>
+      <div class="section-desc">Палитра, типографика, компоненты, иконки</div>
+    </div>
+
+    <!-- PALETTE -->
+    <h3>Цветовая палитра</h3>
+    <p>Палитра выводится напрямую из логотипа компании: тёплый оранжевый + нейтральный серый + белый. Никакого navy как основного цвета — он уходит в прошлое. Серый — главный нейтральный, оранжевый — единственный акцент.</p>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F07828"></div>
+        <div class="swatch-name">Orange</div>
+        <div class="swatch-hex">#F07828</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FF9A50"></div>
+        <div class="swatch-name">Orange Light</div>
+        <div class="swatch-hex">#FF9A50</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E56800"></div>
+        <div class="swatch-name">Orange Dark</div>
+        <div class="swatch-hex">#E56800</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B6B6B"></div>
+        <div class="swatch-name">Grey</div>
+        <div class="swatch-hex">#6B6B6B</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3D3D3D"></div>
+        <div class="swatch-name">Grey Dark</div>
+        <div class="swatch-hex">#3D3D3D</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5F5F5"></div>
+        <div class="swatch-name">Grey Light</div>
+        <div class="swatch-hex">#F5F5F5</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E8E8E8"></div>
+        <div class="swatch-name">Border</div>
+        <div class="swatch-hex">#E8E8E8</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF"></div>
+        <div class="swatch-name">White</div>
+        <div class="swatch-hex">#FFFFFF</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1A1A1A"></div>
+        <div class="swatch-name">Text</div>
+        <div class="swatch-hex">#1A1A1A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2D7A4F"></div>
+        <div class="swatch-name">Success</div>
+        <div class="swatch-hex">#2D7A4F</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C0392B"></div>
+        <div class="swatch-name">Error</div>
+        <div class="swatch-hex">#C0392B</div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Бренд-цвета из логотипа:</strong> Orange #F07828 и Grey #6B6B6B. Navy (#1A2440) из предыдущей версии брифа — исключить. Тёмные блоки (footer, контрастные секции) делать на Grey Dark #3D3D3D, не на navy.
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <h3>Типографическая шкала</h3>
+    <p>Только sans-serif — никаких шрифтов с засечками. Один шрифт на весь сайт: <strong>Inter</strong>. Чистота и читаемость в духе moedelo.org.</p>
+    <table class="comp-table">
+      <thead><tr><th>Роль</th><th>Шрифт</th><th>Размер</th><th>Начертание</th><th>Применение</th></tr></thead>
+      <tbody>
+        <tr><td>Display / H1</td><td>Inter</td><td>52–64px</td><td>700</td><td>Hero-заголовки первых экранов</td></tr>
+        <tr><td>H2</td><td>Inter</td><td>34–40px</td><td>700</td><td>Заголовки секций</td></tr>
+        <tr><td>H3</td><td>Inter</td><td>22–26px</td><td>600</td><td>Заголовки карточек, подсекций</td></tr>
+        <tr><td>H4</td><td>Inter</td><td>16–18px</td><td>600</td><td>Лейблы, мини-заголовки</td></tr>
+        <tr><td>Body Large</td><td>Inter</td><td>17–18px</td><td>400</td><td>Подзаголовки hero, ключевой текст</td></tr>
+        <tr><td>Body</td><td>Inter</td><td>15–16px</td><td>400</td><td>Основной текст страниц</td></tr>
+        <tr><td>Body Small</td><td>Inter</td><td>13–14px</td><td>400</td><td>Подписи, мета-информация</td></tr>
+        <tr><td>Caption</td><td>Inter</td><td>11–12px</td><td>500, uppercase</td><td>Лейблы, теги, eyebrow</td></tr>
+      </tbody>
+    </table>
+
+    <div class="notice">
+      <strong>Playfair Display — исключить полностью.</strong> Только Inter. Line-height: заголовки 1.15–1.25, body text 1.65–1.7. Max-width контента: 680px для статей, 1100px для layout.
+    </div>
+
+    <!-- BUTTONS -->
+    <h3>Кнопки</h3>
+    <table class="comp-table">
+      <thead><tr><th>Вариант</th><th>Фон</th><th>Текст</th><th>Hover</th><th>Применение</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primary</strong></td><td>#C4612C</td><td>#FFFFFF</td><td>background: #B05525, transform: translateY(-1px)</td><td>Главный CTA на каждый экран</td></tr>
+        <tr><td><strong>Secondary</strong></td><td>transparent</td><td>#1A2440</td><td>background: #1A2440, text: white</td><td>Второстепенные действия рядом с Primary</td></tr>
+        <tr><td><strong>Ghost</strong></td><td>transparent</td><td>#C4612C</td><td>background: rgba(196,97,44,0.08)</td><td>В блоках на тёмном фоне (navy)</td></tr>
+        <tr><td><strong>White (на navy)</strong></td><td>#FFFFFF</td><td>#1A2440</td><td>background: #F6F4F0</td><td>CTA на тёмных блоках</td></tr>
+        <tr><td><strong>Link</strong></td><td>–</td><td>#C4612C</td><td>underline</td><td>Текстовые ссылки в контенте</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px; color: var(--text-muted)"><strong>Размеры:</strong> Large: 52px h, 24px h-padding. Default: 44px h, 20px h-padding. Small: 36px h, 14px h-padding. Border-radius: 6px. Font-weight: 600. Letter-spacing: 0.02em.</p>
+
+    <!-- CARDS -->
+    <h3>Карточки</h3>
+    <table class="comp-table">
+      <thead><tr><th>Тип</th><th>Применение</th><th>Спецификация</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Услуга</strong></td>
+          <td>Страница /uslugi, блок на главной</td>
+          <td>Фон: white. Border: 1px solid #D6D2CB. Radius: 10px. Padding: 24px. Hover: box-shadow 0 4px 20px rgba(0,0,0,0.1), translateY(-2px). Иконка 36px navy, H3, текст 13px, ссылка-arrow.</td>
+        </tr>
+        <tr>
+          <td><strong>Статья</strong></td>
+          <td>/blog листинг, главная</td>
+          <td>Обложка 16:9 (border-radius 8px 8px 0 0). Тег (чип #E8ECF6). H3 (2 строки max). Мета: дата + время чтения. Hover: image transform scale(1.02).</td>
+        </tr>
+        <tr>
+          <td><strong>Сотрудник</strong></td>
+          <td>/team, тизер на главной</td>
+          <td>Фото квадрат или круг (дизайнер решает). Имя 16px/600. Должность 13px muted. Теги специализации. Hover: лёгкий overlay с цитатой.</td>
+        </tr>
+        <tr>
+          <td><strong>Отзыв</strong></td>
+          <td>Слайдер на главной</td>
+          <td>Фон: white. Аватар 40px (инициал на navy-фоне). Имя + дата. Звёзды (SVG, orange). Текст 14px, max 4 строки с ellipsis. Ссылка «Читать полностью».</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- FORMS -->
+    <h3>Формы и инпуты</h3>
+    <table class="comp-table">
+      <thead><tr><th>Состояние</th><th>Border</th><th>Спецификация</th></tr></thead>
+      <tbody>
+        <tr><td>Default</td><td>1px solid #D6D2CB</td><td>Высота 48px. Radius 6px. Padding 0 14px. Font 15px. Placeholder: #9E9A94.</td></tr>
+        <tr><td>Focus</td><td>2px solid #1A2440</td><td>Box-shadow: 0 0 0 3px rgba(26,36,64,0.12).</td></tr>
+        <tr><td>Error</td><td>2px solid #C0392B</td><td>Под полем: текст ошибки 12px красный.</td></tr>
+        <tr><td>Success</td><td>2px solid #2D7A4F</td><td>Иконка ✓ справа внутри поля.</td></tr>
+        <tr><td>Disabled</td><td>1px solid #E0DDD8</td><td>Background: #F8F6F3. Cursor: not-allowed.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ICONS -->
+    <h3>Иконки</h3>
+    <ul>
+      <li><strong>Библиотека:</strong> Lucide Icons (MIT лицензия, React-компоненты)</li>
+      <li><strong>Размеры:</strong> 16px (inline в тексте), 20px (UI элементы), 24px (навигация), 36px (карточки услуг)</li>
+      <li><strong>Стиль:</strong> Монолайн, stroke-width 1.5. Не solid/filled.</li>
+      <li><strong>Цвет:</strong> Иконки услуг — navy. Функциональные UI — muted (#5A5A57). Акцентные — orange.</li>
+      <li><strong>Никаких emoji как иконок:</strong> только SVG.</li>
+    </ul>
+
+    <!-- IMAGES -->
+    <h3>Стиль изображений</h3>
+    <ul>
+      <li><strong>Команда:</strong> Живые фотографии реальных сотрудников. Естественное освещение, нейтральный фон (белый или мягко размытый офис). Не постановочные стоковые.</li>
+      <li><strong>Обложки статей:</strong> Flat иллюстрации в цветах бренда (navy + orange) или типографические обложки. Без стоковых фото людей за ноутбуком.</li>
+      <li><strong>Декоративные элементы:</strong> Геометрические фигуры (круги, прямоугольники) в navy/orange с opacity 5–15%. Не клипарт, не иллюстрации с людьми.</li>
+      <li><strong>Форматы:</strong> WebP с fallback JPEG. next/image с lazy-loading. Ширина 2× для Retina.</li>
+    </ul>
+
+    <!-- SPACING -->
+    <h3>Отступы и сетка</h3>
+    <table class="comp-table">
+      <thead><tr><th>Токен</th><th>Значение</th><th>Применение</th></tr></thead>
+      <tbody>
+        <tr><td>space-1</td><td>4px</td><td>Внутри инлайн-элементов</td></tr>
+        <tr><td>space-2</td><td>8px</td><td>Gap между иконкой и текстом</td></tr>
+        <tr><td>space-3</td><td>12px</td><td>Padding карточек (вертикаль)</td></tr>
+        <tr><td>space-4</td><td>16px</td><td>Gap между элементами секции</td></tr>
+        <tr><td>space-6</td><td>24px</td><td>Padding карточек, gap сетки</td></tr>
+        <tr><td>space-8</td><td>32px</td><td>Margin между блоками внутри секции</td></tr>
+        <tr><td>space-12</td><td>48px</td><td>Padding секций (мобильный)</td></tr>
+        <tr><td>space-16</td><td>64px</td><td>Padding секций (десктоп)</td></tr>
+        <tr><td>space-20</td><td>80px</td><td>Крупные разрывы между секциями</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px; color: var(--text-muted)"><strong>Сетка:</strong> 12 колонок, gutter 24px, container max-width 1100px, padding 64px. Брейкпоинты: sm 640px, md 768px, lg 1024px, xl 1280px.</p>
+
+  </div>
+</div>
+
+<!-- SECTION 5: VISUAL CONCEPT -->
+<div class="section" id="s5">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Визуальная концепция</h2>
+      <div class="section-desc">Атмосфера, философия, детали</div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 24px;">
+      <div class="card" style="border-top: 3px solid var(--orange);">
+        <div class="card-title">Ключевое слово</div>
+        <p style="font-size: 18px; font-weight: 600; color: var(--text); margin: 8px 0">«Надёжный партнёр»</p>
+        <p>Не «строгая бухгалтерия», не «технологичный стартап». Компания, которой доверяют деньги, налоги и спокойствие.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--orange);">
+        <div class="card-title">Эмоциональная цель</div>
+        <p>Посетитель должен почувствовать: <em>«Здесь профессионалы, которые разбираются. Мне не нужно самому вникать — они всё сделают правильно.»</em></p>
+      </div>
+    </div>
+
+    <h3>Минимализм vs. насыщенность</h3>
+    <p><strong>Средний минимализм</strong> — не аскетичная пустота, но и не перегруженная страница с эффектами. Достаточно воздуха, чтобы контент дышал. Достаточно деталей, чтобы страница выглядела сделанной с вниманием.</p>
+    <p>Правило: на один экран — один визуальный акцент. Не три кнопки, не пять цветов, не анимации везде.</p>
+
+    <h3>Фото vs. иллюстрации</h3>
+    <ul>
+      <li><strong>Фото реальной команды:</strong> обязательно на главной (hero), странице /team, карточках статей (авторы). Создаёт доверие.</li>
+      <li><strong>Иллюстрации:</strong> для обложек статей, декоративных фонов секций, иконок услуг. Flat-стиль, строго в палитре бренда.</li>
+      <li><strong>Стоковые фото людей:</strong> запрещены. Исключение — если нет фото команды, используем нейтральные офисные детали (стол, блокнот, калькулятор) без людей.</li>
+    </ul>
+
+    <h3>Анимации и микровзаимодействия</h3>
+    <table class="comp-table">
+      <thead><tr><th>Элемент</th><th>Анимация</th><th>Параметры</th></tr></thead>
+      <tbody>
+        <tr><td>Hover на карточки</td><td>translateY(-2px) + box-shadow</td><td>150ms ease</td></tr>
+        <tr><td>Hover на кнопки</td><td>translateY(-1px) + darkening</td><td>120ms ease</td></tr>
+        <tr><td>Появление секций при скролле</td><td>fadeInUp (opacity 0→1, translateY 20px→0)</td><td>400ms ease-out, threshold 20%</td></tr>
+        <tr><td>Шаги калькулятора</td><td>slideInRight (translateX 30px→0)</td><td>250ms ease-out</td></tr>
+        <tr><td>Отправка формы</td><td>Кнопка: spinner → checkmark</td><td>200ms</td></tr>
+        <tr><td>Счётчики (12 лет, 350+)</td><td>Count-up при появлении в viewport</td><td>800ms ease-out</td></tr>
+        <tr><td>Слайдер отзывов</td><td>Плавный slide</td><td>300ms ease</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px; color: var(--text-muted)">Все анимации должны отключаться при <code>prefers-reduced-motion: reduce</code>.</p>
+
+    <h3>Скругления и тени</h3>
+    <ul>
+      <li><strong>Border-radius:</strong> 6px — кнопки, инпуты; 8–10px — карточки; 4px — теги/чипы; 50% — аватары.</li>
+      <li><strong>Тени:</strong> лёгкие, не глубокие. Default карточка: <code>box-shadow: 0 1px 4px rgba(0,0,0,0.06)</code>. Hover: <code>0 4px 20px rgba(0,0,0,0.1)</code>. Никаких тёмных или цветных теней.</li>
+      <li><strong>Никаких градиентов</strong> в основных блоках — только однородные цвета. Градиент допустим как декоративный элемент в hero (overlay для читаемости текста на фото).</li>
+    </ul>
+
+    <h3>Стиль иконок</h3>
+    <p>Lucide Icons, монолайн, stroke 1.5px. Не меняем на другую библиотеку для отдельных иконок — весь сайт в одном стиле. Кастомные иконки (если нужны) рисуются в том же стиле: 24×24px viewport, stroke 1.5.</p>
+
+    <h3>Тёмная тема</h3>
+    <p>Сайт поддерживает тёмную тему. Фон: #1A1A1A, поверхности: #242424, текст: #E8E8E8. Orange #F07828 сохраняется без изменений — он достаточно яркий для обоих режимов. Серый Grey Light (#F5F5F5) инвертируется в #2A2A2A.</p>
+    <div class="notice">Все компоненты тестируются в обоих режимах. Ни один цвет не задаётся жёстко без CSS-переменной.</div>
+
+  </div>
+</div>
+
+<!-- SECTION 6: REFERENCES -->
+<div class="section" id="s6">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Референсы</h2>
+      <div class="section-desc">Что адаптировать и почему</div>
+    </div>
+
+    <div class="notice notice-crit">
+      <strong>Главный референс: moedelo.org/internet-buhgalteriya</strong> — брать общий визуальный язык, подход к типографике, структуру блоков, ощущение чистоты. Не копировать 1:1 — адаптировать под бренд Бухстарт (оранжевый + серый вместо их цветов).
+    </div>
+
+    <h3>★ Первичный референс — Moedelo.org</h3>
+    <div class="ref-card" style="border-left: 3px solid var(--orange);">
+      <div class="ref-title">moedelo.org/internet-buhgalteriya — ГЛАВНЫЙ РЕФЕРЕНС</div>
+      <div class="ref-url">moedelo.org/internet-buhgalteriya</div>
+      <div class="ref-take">
+        <strong>Что брать целиком:</strong> общий визуальный тон — чистый, светлый, профессиональный без пафоса. Sans-serif типографика, крупные заголовки без засечек. Структура главной страницы — hero → преимущества → как работает → тарифы → CTA. Карточки с иконками и коротким текстом. Светлый фон с серыми разделителями секций. Минималистичная навигация.<br><br>
+        <strong>Что адаптировать под Бухстарт:</strong> заменить их цвета на оранжевый #F07828 + серый #6B6B6B из логотипа. Добавить блок команды с реальными фото (у moedelo его нет). Добавить калькулятор (у них другой формат). Добавить интеграцию отзывов Яндекс.Карт.<br><br>
+        <strong>Что не брать:</strong> их конкретные иллюстрации, тарифную сетку (у нас другая модель), логотип и фирменный стиль.
+      </div>
+    </div>
+
+    <h3>Дополнительные референсы</h3>
+    <div class="ref-card">
+      <div class="ref-title">Tinkoff Business</div>
+      <div class="ref-url">tinkoff.ru/business/</div>
+      <div class="ref-take"><strong>Что брать:</strong> Trust bar с ключевыми цифрами сразу после hero. Цифровые метрики «350+ клиентов / 12 лет / 0 штрафов» как визуальный элемент.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-title">Typeform.com</div>
+      <div class="ref-url">typeform.com</div>
+      <div class="ref-take"><strong>Что брать:</strong> Один вопрос на экран в калькуляторе. Крупные кнопки-ответы вместо radio buttons. Анимация перехода между шагами.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-title">Дело Модульбанка</div>
+      <div class="ref-url">delo.modulbank.ru</div>
+      <div class="ref-take"><strong>Что брать:</strong> Карточки статей с тегами и временем чтения. Sticky sidebar с оглавлением. CTA в конце статьи.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-title">Skyeng.ru</div>
+      <div class="ref-url">skyeng.ru</div>
+      <div class="ref-take"><strong>Что брать:</strong> Карточки специалистов с реальными фото. Акцент на людях, не на корпоративном стиле.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 7: USER SCENARIOS -->
+<div class="section" id="s7">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Пользовательские сценарии</h2>
+      <div class="section-desc">7 путей — от первого визита до заявки</div>
+    </div>
+
+    <!-- S1 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 1: Новый посетитель — «Оцениваю варианты»</div>
+      <p style="font-size:13px; color: var(--text-muted)">Владелец ИП, впервые слышит о компании, пришёл из рекламы</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>Попадает на главную. Hero: читает H1, видит фото команды, воспринимает trust-marks «12 лет / 350+ клиентов».</div></div>
+        <div class="step"><div class="step-n">2</div><div>Скроллит к блоку «Почему мы» (navy). Видит гарантии — это снижает тревогу.</div></div>
+        <div class="step"><div class="step-n">3</div><div>Видит блок команды. Живые фото = доверие. Кликает «Познакомиться с командой» → /team.</div></div>
+        <div class="step"><div class="step-n">4</div><div>Читает карточки сотрудников. Видит специализацию, опыт. Убеждается.</div></div>
+        <div class="step"><div class="step-n">5</div><div>Возвращается на главную, кликает «Записаться на консультацию» → прокрутка к форме → заполняет имя + телефон → Отправить.</div></div>
+      </div>
+      <div style="margin-top:10px"><span class="tag tag-note">Дизайн-фокус: герой должен за 3 секунды дать ответ на «это для меня?»</span></div>
+    </div>
+
+    <!-- S2 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 2: Поиск конкретной услуги</div>
+      <p style="font-size:13px; color: var(--text-muted)">ООО, нужен кадровый учёт, пришёл из Google по запросу «кадровый учёт аутсорсинг»</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>Попадает на /uslugi/kadrovyi-uchet (SEO-страница). Читает H1 «Кадровый учёт на аутсорсинге».</div></div>
+        <div class="step"><div class="step-n">2</div><div>Читает «Что входит» — видит полный список (трудовые книжки, СЗВ-М, отпуска, больничные…). Убеждается в полноте.</div></div>
+        <div class="step"><div class="step-n">3</div><div>Смотрит «Для кого» — находит карточку «ООО 10–50 сотрудников». Узнаёт себя.</div></div>
+        <div class="step"><div class="step-n">4</div><div>Видит диапазон стоимости «от X руб/мес». Понимает порядок цифр.</div></div>
+        <div class="step"><div class="step-n">5</div><div>Кликает «Рассчитать точную стоимость» → попадает на /calculator с предвыбранным «кадровый учёт».</div></div>
+        <div class="step"><div class="step-n">6</div><div>Проходит 9 шагов (уже знает ответы — 30 сек). Видит рекомендации. Оставляет контакт.</div></div>
+      </div>
+    </div>
+
+    <!-- S3 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 3: Пользователь калькулятора</div>
+      <p style="font-size:13px; color: var(--text-muted)">Стартапер, регистрирует ООО, не понимает что ему нужно</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>Видит на главной блок «Подберём услуги» → нажимает «Начать расчёт».</div></div>
+        <div class="step"><div class="step-n">2</div><div>Шаги 1–9: отвечает на вопросы. Прогресс-бар даёт ощущение контроля. Анимации делают процесс живым.</div></div>
+        <div class="step"><div class="step-n">3</div><div>Экран результата: видит список «Для вашей ситуации подойдут: бухгалтерское обслуживание + регистрация ООО». Без цен.</div></div>
+        <div class="step"><div class="step-n">4</div><div>Оставляет имя + телефон «для получения точного расчёта». Лид с полными данными уходит в Битрикс24.</div></div>
+        <div class="step"><div class="step-n">5</div><div>Менеджер открывает лид, нажимает «Открыть в калькуляторе» — калькулятор предзаполнен, можно посчитать точную цену.</div></div>
+      </div>
+      <div style="margin-top:10px"><span class="tag tag-note">Дизайн-фокус: шаги должны быть быстрыми — каждый вопрос на весь экран, большие кнопки, без лишнего</span></div>
+    </div>
+
+    <!-- S4 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 4: Запись на консультацию</div>
+      <p style="font-size:13px; color: var(--text-muted)">Уже готов записаться, видел компанию раньше</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>Открывает сайт напрямую (помнит бренд). Header: кнопка «Записаться» в правом углу.</div></div>
+        <div class="step"><div class="step-n">2</div><div>Кликает → плавная прокрутка к форме на главной (или попап на мобильном).</div></div>
+        <div class="step"><div class="step-n">3</div><div>Заполняет: Имя → Телефон → Удобное время (datepicker, показывает доступные слоты). Отправить.</div></div>
+        <div class="step"><div class="step-n">4</div><div>Анимация успеха: «Отлично! Мы свяжемся с вами до [время]». Ни «ошибка», ни «спасибо за обращение» — конкретика.</div></div>
+      </div>
+    </div>
+
+    <!-- S5 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 5: Читатель статей</div>
+      <p style="font-size:13px; color: var(--text-muted)">Главбух компании, пришёл из поиска «как учитывать ВЭД на УСН»</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>Попадает на /blog/[slug]. Читает статью (контент хорошего качества — главный крючок).</div></div>
+        <div class="step"><div class="step-n">2</div><div>Sidebar: видит оглавление, ориентируется в статье. Sticky блок «Нужна помощь с ВЭД?» появляется после 30% прочтения.</div></div>
+        <div class="step"><div class="step-n">3</div><div>Конец статьи: «Похожие статьи» → читает ещё 2 материала. Остаётся на сайте 8+ минут.</div></div>
+        <div class="step"><div class="step-n">4</div><div>Третья статья: видит CTA «Обсудить с бухгалтером ВЭД» → заполняет форму.</div></div>
+      </div>
+    </div>
+
+    <!-- S6 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 6: Проверка доверия</div>
+      <p style="font-size:13px; color: var(--text-muted)">Клиент, который хочет убедиться в компетентности перед звонком</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>Читает отзывы на главной. Видит 4.9 звезды + 87 отзывов. Кликает «Все отзывы» → Яндекс.Карты.</div></div>
+        <div class="step"><div class="step-n">2</div><div>Возвращается. Переходит на /team — читает биографии. Смотрит фото.</div></div>
+        <div class="step"><div class="step-n">3</div><div>Читает 1–2 статьи в блоге — убеждается в экспертизе.</div></div>
+        <div class="step"><div class="step-n">4</div><div>Идёт на /contacts — проверяет адрес. Видит карту. Убеждается что компания реальная.</div></div>
+        <div class="step"><div class="step-n">5</div><div>Звонит или пишет в WhatsApp (видит кнопку в header и footer).</div></div>
+      </div>
+      <div style="margin-top:10px"><span class="tag tag-note">Дизайн-фокус: реальные фото и единый адрес критически важны для этого сценария</span></div>
+    </div>
+
+    <!-- S7 -->
+    <div class="scenario">
+      <div class="scenario-name">Сценарий 7: Заполнение lead-формы из любой точки</div>
+      <p style="font-size:13px; color: var(--text-muted)">Пользователь готов действовать — ищет форму</p>
+      <div class="scenario-steps">
+        <div class="step"><div class="step-n">1</div><div>В хедере: всегда видна кнопка «Записаться» (sticky header). На мобильном: фиксированная нижняя панель с кнопкой.</div></div>
+        <div class="step"><div class="step-n">2</div><div>Форма доступна: в hero главной (кнопка прокручивает к форме), на каждой странице услуги (последний блок), в /contacts, в конце каждой статьи.</div></div>
+        <div class="step"><div class="step-n">3</div><div>Форма везде одинаковая (3 поля: имя, телефон, время). UTM-параметр автоматически добавляет источник.</div></div>
+        <div class="step"><div class="step-n">4</div><div>После отправки: анимация успеха в том же блоке (не редирект на другую страницу). Форма исчезает, появляется «Мы свяжемся до [время]».</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 8: MOBILE -->
+<div class="section" id="s8">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Мобильная версия</h2>
+      <div class="section-desc">Responsive-рекомендации, приоритеты, отдельные решения</div>
+    </div>
+
+    <div class="notice notice-crit">
+      <strong>Mobile-first разработка.</strong> Сначала дизайн для 375px, затем расширяем до десктопа. Более 60% трафика бухгалтерских сайтов — мобильные устройства.
+    </div>
+
+    <h3>Хедер</h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Десктоп</div>
+        <p>Логотип слева. Навигация в центре (5 пунктов). Кнопка «Записаться» справа. Sticky при скролле.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Мобильный (≤768px)</div>
+        <p>Логотип слева. Бургер-иконка справа (3 линии → × при открытии). Полноэкранное меню поверх страницы: навигация крупным шрифтом (24px), телефон, кнопка «Записаться».</p>
+      </div>
+    </div>
+
+    <h3>Фиксированная нижняя панель (мобильный)</h3>
+    <div class="card" style="border-left: 3px solid var(--orange);">
+      <p>На мобильных — sticky bottom bar высотой 56px с двумя кнопками: <strong>«Записаться» (primary)</strong> и <strong>иконка телефона (secondary)</strong>. Появляется после прокрутки на 200px. Перекрывает нижнюю часть страницы — основной контент не обрезается (padding-bottom на body).</p>
+    </div>
+
+    <h3>Трансформации блоков по брейкпоинтам</h3>
+    <table class="comp-table">
+      <thead><tr><th>Блок</th><th>Десктоп</th><th>Планшет (768px)</th><th>Мобильный (375px)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Hero</strong></td>
+          <td>Split 50/50: текст слева, фото справа</td>
+          <td>Split 60/40</td>
+          <td>Стек: фото сверху (16:9), текст снизу. H1 36px. Кнопки full-width.</td>
+        </tr>
+        <tr>
+          <td><strong>Trust bar</strong></td>
+          <td>5 метрик в ряд</td>
+          <td>Оборачивается в 2 строки</td>
+          <td>Горизонтальный скролл с snap, или 2×2 сетка</td>
+        </tr>
+        <tr>
+          <td><strong>Услуги</strong></td>
+          <td>3 колонки × 2 строки</td>
+          <td>2 колонки × 3 строки</td>
+          <td>1 колонка или горизонтальный скролл-слайдер</td>
+        </tr>
+        <tr>
+          <td><strong>«Почему мы»</strong></td>
+          <td>2 колонки</td>
+          <td>2 колонки</td>
+          <td>1 колонка, каждый тезис отдельно</td>
+        </tr>
+        <tr>
+          <td><strong>Команда</strong></td>
+          <td>4 карточки в ряд</td>
+          <td>2 карточки в ряд</td>
+          <td>Горизонтальный скролл (карточка 280px), snap</td>
+        </tr>
+        <tr>
+          <td><strong>Отзывы</strong></td>
+          <td>Слайдер с 2 видимыми</td>
+          <td>Слайдер 1 видимый</td>
+          <td>Слайдер 1 видимый, полная ширина</td>
+        </tr>
+        <tr>
+          <td><strong>Статьи</strong></td>
+          <td>3 карточки в ряд</td>
+          <td>2 карточки</td>
+          <td>1 карточка / горизонтальный скролл</td>
+        </tr>
+        <tr>
+          <td><strong>Форма</strong></td>
+          <td>Inline в секции, 2 поля в ряд</td>
+          <td>1 поле на строку</td>
+          <td>1 поле на строку, full-width кнопка</td>
+        </tr>
+        <tr>
+          <td><strong>Footer</strong></td>
+          <td>4 колонки</td>
+          <td>2 колонки</td>
+          <td>Аккордеон (каждая колонка раскрывается)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Калькулятор на мобильном</h3>
+    <ul>
+      <li>Каждый шаг — полноэкранный (100vh). Вопрос вверху, варианты ответа занимают 60% экрана.</li>
+      <li>Кнопки ответа: высота минимум 52px (thumb-friendly).</li>
+      <li>Прогресс-бар: тонкая линия сверху экрана (4px высота).</li>
+      <li>«Назад» — иконка ← в левом верхнем углу.</li>
+      <li>Слайдер (шаг 4, количество операций): заменяется на 4 кнопки-варианта (слайдеры неудобны на сенсорных экранах).</li>
+      <li>Экран результата: список услуг (крупно), форма под ним, всё на одном экране с прокруткой.</li>
+    </ul>
+
+    <h3>Страница статьи на мобильном</h3>
+    <ul>
+      <li>Sidebar с оглавлением — скрыт. Заменяется на кнопку «Оглавление» (иконка ≡) в sticky mini-header статьи, открывает sheet снизу.</li>
+      <li>Sticky CTA «Записаться» из sidebar — становится частью фиксированной нижней панели.</li>
+      <li>Контент: font-size 16px, line-height 1.7, max-width 100%. Хорошая читаемость без горизонтального скролла.</li>
+    </ul>
+
+    <h3>Touch-специфика</h3>
+    <ul>
+      <li>Минимальный tap target: 44×44px (рекомендация Apple/Google). Кнопки, ссылки, radio — все увеличены до этого минимума.</li>
+      <li>Горизонтальный скролл (команда, услуги, отзывы): <code>scroll-snap-type: x mandatory</code>. Индикатор: точки снизу или «2/4» счётчик.</li>
+      <li>Hover-состояния не используются для мобильного (нет курсора). Визуальная обратная связь только через tap (active state, 100ms).</li>
+      <li>Яндекс.Карты: на мобильном вместо iframe — ссылка «Открыть в Яндекс.Картах» + статичный скриншот карты.</li>
+    </ul>
+
+    <h3>Производительность</h3>
+    <ul>
+      <li>LCP цель: &lt;2.5s на мобильном 4G. Hero-изображение: preload, WebP, width 800px.</li>
+      <li>Шрифты: Inter через <code>next/font</code> (нет layout shift). Playfair Display — только если используется в H1 hero, иначе Inter везде.</li>
+      <li>Lazy-load все изображения ниже hero. Intersection Observer для анимаций появления.</li>
+      <li>Калькулятор: JS-бандл разбит на чанки. Шаги загружаются по мере прохождения (code splitting).</li>
+    </ul>
+
+    <h3>Критические мобильные CTA</h3>
+    <div class="card" style="border-left: 3px solid var(--orange);">
+      <p>На мобильном в любой точке сайта должно быть не более 1 scrolling-action до ближайшего способа связаться. Фиксированная нижняя панель решает эту задачу. Проверить: можно ли записаться не скроля вверх и не ища форму — если нет, это баг дизайна.</p>
+    </div>
+
+    <h3>Контрольный список мобильного дизайна</h3>
+    <table class="comp-table">
+      <thead><tr><th>Пункт</th><th>Критерий</th></tr></thead>
+      <tbody>
+        <tr><td>Tap targets</td><td>Все интерактивные элементы ≥ 44×44px</td></tr>
+        <tr><td>Font sizes</td><td>Минимум 14px для любого текста, body ≥ 15px</td></tr>
+        <tr><td>Горизонтальный скролл</td><td>Только внутри scroll-контейнеров, тело страницы не скроллится горизонтально</td></tr>
+        <tr><td>Формы</td><td>Инпуты ≥ 48px высота, label над полем (не внутри)</td></tr>
+        <tr><td>Изображения</td><td>max-width: 100%, никаких overflow</td></tr>
+        <tr><td>Калькулятор шаги</td><td>Умещаются без прокрутки (один вопрос = один экран)</td></tr>
+        <tr><td>Яндекс.Карты</td><td>Ссылка вместо iframe или iframe с правильным viewport</td></tr>
+        <tr><td>Footer nav</td><td>Аккордеон, не 4 колонки текста 10px</td></tr>
+        <tr><td>Hamburger menu</td><td>Закрывается по клику за пределами и по кнопке ×</td></tr>
+        <tr><td>Sticky CTA</td><td>Не перекрывает важный контент (padding-bottom у body)</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- SECTION 9: EXISTING CALCULATOR -->
+<div class="section" id="s9">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Существующий калькулятор — адаптация для клиента</h2>
+      <div class="section-desc">Не создаём новый — переиспользуем готовую бизнес-логику</div>
+    </div>
+
+    <div class="notice notice-crit">
+      <strong>Ключевое требование:</strong> клиентский калькулятор на сайте — это UI-обёртка над тем же движком, что уже работает у менеджеров. Логика расчёта одна. Различается только то, что показывается на экране.
+    </div>
+
+    <h3>Что такое существующий калькулятор</h3>
+    <p>Инструмент менеджера (файлы <code>index.html</code> + <code>script.js</code>) — 12-шаговый квиз, который:</p>
+    <ul>
+      <li>Собирает параметры клиента (форма, налоги, деятельность, сотрудники, доп.услуги)</li>
+      <li>Рассчитывает стоимость трёх пакетов: <strong>Базовая / Стандарт / Оптима</strong></li>
+      <li>Генерирует КП, Оферту и Счёт в формате .docx</li>
+    </ul>
+    <p>Функция <code>calcTotal()</code> в <code>script.js</code> — это единое ядро расчёта. Именно её логика должна работать и в клиентском калькуляторе на сайте.</p>
+
+    <h3>Маппинг шагов: что видит клиент vs менеджер</h3>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Внутренний шаг</th>
+          <th>Вопрос</th>
+          <th>Клиентский сайт</th>
+          <th>Менеджер (только)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Step 1</td><td>Форма собственности (ИП / ООО)</td><td>✅ Шаг 1</td><td>—</td></tr>
+        <tr><td>Step 2</td><td>Нулевая отчётность?</td><td>✅ Шаг 2</td><td>—</td></tr>
+        <tr><td>Step 3</td><td>Система налогообложения</td><td>✅ Шаг 3</td><td>—</td></tr>
+        <tr><td>Step 13</td><td>Налоговый менеджмент (УСН15/ОСНО/АУСН)</td><td>✅ Шаг 4 (если применимо)</td><td>—</td></tr>
+        <tr><td>Step 4</td><td>Вид деятельности (ниши)</td><td>✅ Шаг 4 / 5</td><td>—</td></tr>
+        <tr><td>Step 5</td><td>Маркетплейсы (если выбран marketplace)</td><td>✅ Условный шаг</td><td>—</td></tr>
+        <tr><td>Step 6</td><td>НДС</td><td>✅ Шаг</td><td>—</td></tr>
+        <tr><td>Step 7</td><td>Сотрудники (РФ + иностранные)</td><td>✅ Шаг</td><td>—</td></tr>
+        <tr><td>Step 8</td><td>Касса, авансовые отчёты</td><td>✅ Шаг</td><td>—</td></tr>
+        <tr><td>Step 9</td><td>ВЭД, сверки, воинский учёт, лицензии, СПОТ</td><td>✅ Шаг (упрощённый)</td><td>—</td></tr>
+        <tr><td>Step 15</td><td>Управленческий учёт (Оптима)</td><td>✅ Шаг (опционально)</td><td>—</td></tr>
+        <tr><td>Step 10</td><td>Приоритетный ответ менеджера (+20%)</td><td>❌ Скрыт</td><td>✅ Только менеджер</td></tr>
+        <tr><td>Step 14</td><td>Бухгалтер в офисе (N смен × 7 500 ₽)</td><td>❌ Скрыт</td><td>✅ Только менеджер</td></tr>
+        <tr><td>Step 12</td><td>Скидка (0% / 5% / 10% / 15%)</td><td>❌ Скрыт</td><td>✅ Только менеджер</td></tr>
+        <tr><td>Step 11</td><td>Название компании / ФИО</td><td>→ Форма контакта (имя + телефон)</td><td>+ реквизиты для договора</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Прайс-лист (объект P из script.js)</h3>
+    <p>Все цены хранятся в объекте <code>P</code>. На клиентском сайте этот объект <strong>никогда не попадает в браузер</strong> — расчёт выполняется на сервере (Next.js Route Handler), клиенту возвращается только список услуг без цен.</p>
+
+    <pre>// Базовые ставки (из script.js — единственный источник правды)
+const P = {
+  null_ip:  2000,    null_ooo: 3000,
+  entity_ooo: 10000,
+  tax:   { patent:1000, ausn_d:5000, ausn_dr:20000, usn6:5000, usn15:20000, osno:30000 },
+  vat:   { не_облагается:0, освобождение:5000, nds5:5000, nds10:5000, nds22:10000 },
+  niche: { marketplace:20000, wb:20000, ozon:5000, ya:10000, mp_inventory:15000,
+           wholesale:20000, wh_inventory:10000, retail:20000, rt_inventory:15000,
+           production:60000, construction:40000, catering:30000,
+           medicine:50000, services:20000 },
+  staff: { none:0, rf_1_3:5000, rf_per:1500, foreign:20000 },
+  cash:  { kassa:15000, avans:10000 },
+  ved:8000, reconcile:15000, tax_mgmt:20000,
+  military_per:2000, licenses:10000,
+}
+const OPTIMA_BASE_PRICE = 60000  // управленческий учёт</pre>
+
+    <h3>Три тарифных пакета</h3>
+    <div class="grid-3">
+      <div class="card" style="border-top: 3px solid #5A7AB8;">
+        <div class="card-title">Базовая</div>
+        <p>Ниша + форма собственности (ООО +10к) + налогообложение + НДС + сотрудники + касса + ВЭД + доп.услуги</p>
+        <p><strong>Клиенту:</strong> список включённых услуг. <strong>Цена:</strong> скрыта.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--orange);">
+        <div class="card-title">Стандарт</div>
+        <p>Базовая + приоритетный менеджер (+20%) + налоговый менеджмент (+20к) + бухгалтер в офисе</p>
+        <p><strong>Клиенту:</strong> «Стандарт включает…» без цен. Менеджер добавляет надбавки при звонке.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--navy);">
+        <div class="card-title">Оптима</div>
+        <p>Стандарт + управленческий учёт (+60к)</p>
+        <p><strong>Клиенту:</strong> показывается если ответил «да» на вопрос об управленческом учёте.</p>
+      </div>
+    </div>
+
+    <h3>Что клиент видит на экране результата</h3>
+    <div class="card" style="border-left: 3px solid var(--orange);">
+      <div class="card-title">Пример результата для ООО на ОСНО с сотрудниками и ВЭД</div>
+      <p><strong>Заголовок:</strong> «Для вашей ситуации подойдут:»</p>
+      <ul>
+        <li>Бухгалтерское обслуживание (ОСНО)</li>
+        <li>Кадровый учёт (сотрудники РФ)</li>
+        <li>ВЭД / Валютные расчёты</li>
+        <li>Обслуживание ООО</li>
+      </ul>
+      <p><strong>Что НЕ показываем:</strong> ни одной цифры, ни диапазона, ни слова «рублей».</p>
+      <p><strong>Подпись под списком:</strong> «Точный расчёт стоимости — на консультации с бухгалтером»</p>
+      <p><strong>Кнопка:</strong> «Получить расчёт» → форма: Имя + Телефон</p>
+    </div>
+
+    <h3>Передача данных в Битрикс24 и менеджеру</h3>
+    <p>После отправки формы клиентом — Next.js Route Handler выполняет два действия:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">1. Лид в Битрикс24 (crm.lead.add)</div>
+        <p>Передаётся полный объект ответов клиента в поле <code>COMMENTS</code> как JSON:</p>
+        <pre style="font-size:11px">{
+  entity: "ООО",
+  tax: "osno",
+  niches: ["services"],
+  staffRf: "rf_1_3",
+  ved: true,
+  ...
+  clientName: "Иван",
+  phone: "+7 999 123-45-67"
+}</pre>
+      </div>
+      <div class="card">
+        <div class="card-title">2. URL для открытия в калькуляторе менеджера</div>
+        <p>В карточке лида — ссылка «Открыть в калькуляторе». Параметры из Битрикс24 передаются как URL-params, калькулятор менеджера их читает при загрузке и предзаполняет все шаги:</p>
+        <pre style="font-size:11px">index.html?entity=ООО&tax=osno
+  &niches=services&staffRf=rf_1_3
+  &ved=true</pre>
+        <p>Менеджер видит уже заполненный квиз — добавляет скидку, приоритет, офисного бухгалтера и формирует КП.</p>
+      </div>
+    </div>
+
+    <h3>Что нужно реализовать в script.js для поддержки предзаполнения</h3>
+    <p>Добавить функцию чтения URL-параметров при старте — она уже частично предусмотрена архитектурой (объект <code>A</code> с дефолтными значениями). Достаточно добавить:</p>
+    <pre>// В начало index.html — после загрузки DOM
+function loadFromURL() {
+  const p = new URLSearchParams(location.search);
+  if (p.get('entity'))   A.entity  = p.get('entity');
+  if (p.get('tax'))      A.tax     = p.get('tax');
+  if (p.get('niches'))   A.niches  = p.get('niches').split(',');
+  if (p.get('ved'))      A.ved     = p.get('ved') === 'true';
+  // ... и так для каждого поля объекта A
+  if (p.size > 0) startQuiz(); // сразу открыть квиз с предзаполненными данными
+}</pre>
+
+    <h3>Что дизайнер должен учесть</h3>
+    <ul>
+      <li><strong>UX квиза на сайте</strong> повторяет логику шагов существующего калькулятора — тот же порядок вопросов, та же условная ветка для маркетплейсов и налогового менеджмента</li>
+      <li><strong>Визуальный язык</strong> отличается: вместо компактных карточек менеджерского инструмента — крупные fullscreen-шаги (см. раздел 02 /calculator)</li>
+      <li><strong>Вопрос про нулевую отчётность (Step 2)</strong> — оставить, это важная ветка: для нулёвки весь остальной квиз пропускается</li>
+      <li><strong>Вопросы про воинский учёт / лицензии / СПОТ (Step 9)</strong> — на клиентском сайте можно объединить в один шаг «Дополнительные задачи» с чекбоксами</li>
+      <li><strong>Скидка (Step 12)</strong> — только у менеджера. На сайте её нет и быть не должно</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="background: var(--navy); padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+  <div style="color: rgba(255,255,255,0.5); font-size: 13px;">
+    Buhstart — Дизайн-бриф v1.0 · Документ для передачи дизайнеру
+  </div>
+  <div style="color: rgba(255,255,255,0.4); font-size: 12px;">
+    Связан с: Аудит сайта · Концепция и архитектура
+  </div>
+</div>
+
+</body>
+</html>

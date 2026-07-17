@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
+<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="max-width:1100px;margin:0 auto;padding:60px 24px 64px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center">
+  <div>
+    <div style="font-size:13px;color:#6B6B6B;margin-bottom:16px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / <a href="uslugi.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Услуги</a> / {{ svc.name }}</div>
+    <h1 style="margin:0 0 16px;font-size:44px;font-weight:800;letter-spacing:-0.02em;line-height:1.15">{{ svc.name }}</h1>
+    <p style="margin:0 0 30px;font-size:18px;color:#6B6B6B;line-height:1.6">{{ svc.lead }}</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="calculator.dc.html" style="text-decoration:none;background:#F07828;color:#fff;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#E56800;transform:translateY(-1px)">Рассчитать стоимость</a>
+      <a href="#forma" style="text-decoration:none;border:1.5px solid #3D3D3D;color:#3D3D3D;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#3D3D3D;color:#fff">Записаться на консультацию</a>
+    </div>
+  </div>
+  <div style="height:320px">
+    <x-import component-from-global-scope="image-slot" from="image-slot.js" id="{{ svc.photoId }}" shape="rounded" radius="12" placeholder="Фото команды за работой" hint-size="100%,320px" style="width:100%;height:320px"></x-import>
+  </div>
+</section>
+
+<section style="background:#F5F5F5;border-top:1px solid #E8E8E8;border-bottom:1px solid #E8E8E8">
+  <div style="max-width:1100px;margin:0 auto;padding:72px 24px">
+    <h2 style="margin:0 0 32px;font-size:32px;font-weight:800;letter-spacing:-0.02em">Что входит в услугу</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 32px">
+      <sc-for list="{{ svc.includes }}" as="item" hint-placeholder-count="8">
+        <div style="display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #E8E8E8;border-radius:8px;padding:14px 18px">
+          <span style="color:#2D7A4F;font-weight:800;flex-shrink:0">✓</span>
+          <span style="font-size:14px;line-height:1.5;color:#3D3D3D">{{ item }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1100px;margin:0 auto;padding:72px 24px">
+  <h2 style="margin:0 0 32px;font-size:32px;font-weight:800;letter-spacing:-0.02em">Для кого подходит</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+    <sc-for list="{{ svc.audience }}" as="p" hint-placeholder-count="4">
+      <div style="border:1px solid #E8E8E8;border-radius:10px;padding:22px;border-top:3px solid #F07828">
+        <div style="font-size:16px;font-weight:600;margin-bottom:8px">{{ p.who }}</div>
+        <div style="font-size:13px;line-height:1.6;color:#6B6B6B">{{ p.why }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#3D3D3D">
+  <div style="max-width:1100px;margin:0 auto;padding:64px 24px">
+    <h2 style="margin:0 0 8px;font-size:32px;font-weight:800;letter-spacing:-0.02em;color:#fff">Стоимость</h2>
+    <p style="margin:0 0 32px;font-size:14px;color:rgba(255,255,255,0.6)">Итоговая стоимость определяется на консультации.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ svc.plans }}" as="pl" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:10px;padding:26px">
+          <div style="font-size:14px;font-weight:600;color:#F07828;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px">{{ pl.name }}</div>
+          <div style="font-size:28px;font-weight:800;margin-bottom:12px">{{ pl.price }}</div>
+          <div style="font-size:13px;line-height:1.6;color:#6B6B6B">{{ pl.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:760px;margin:0 auto;padding:72px 24px">
+  <h2 style="margin:0 0 28px;font-size:32px;font-weight:800;letter-spacing:-0.02em">Частые вопросы</h2>
+  <sc-for list="{{ faqItems }}" as="f" hint-placeholder-count="5">
+    <div style="border-bottom:1px solid #E8E8E8">
+      <button onClick="{{ f.toggle }}" style="width:100%;background:none;border:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;font-family:inherit;text-align:left">
+        <span style="font-size:16px;font-weight:600;color:#1A1A1A">{{ f.q }}</span>
+        <span style="color:#F07828;font-size:20px;font-weight:600;flex-shrink:0">{{ f.mark }}</span>
+      </button>
+      <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:0 0 18px;font-size:14px;line-height:1.7;color:#6B6B6B">{{ f.a }}</div>
+      </sc-if>
+    </div>
+  </sc-for>
+</section>
+
+<section id="forma" style="background:#F5F5F5;border-top:1px solid #E8E8E8">
+  <div style="max-width:640px;margin:0 auto;padding:72px 24px;text-align:center">
+    <h2 style="margin:0 0 10px;font-size:32px;font-weight:800;letter-spacing:-0.02em">Обсудить задачу</h2>
+    <p style="margin:0 0 28px;font-size:15px;color:#6B6B6B">Оставьте контакты — перезвоним в течение 2 часов в рабочее время.</p>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border-radius:12px;padding:40px;border:1px solid #E8E8E8">
+        <div style="width:56px;height:56px;border-radius:50%;background:#2D7A4F;color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">✓</div>
+        <div style="font-size:18px;font-weight:700">Заявка отправлена — мы свяжемся с вами.</div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border-radius:12px;padding:28px;border:1px solid #E8E8E8;display:flex;flex-direction:column;gap:14px;text-align:left">
+        <input placeholder="Имя" value="{{ name }}" onChange="{{ onName }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit" style-focus="border-color:#3D3D3D;outline:none"/>
+        <input placeholder="Телефон" value="{{ phone }}" onChange="{{ onPhone }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit" style-focus="border-color:#3D3D3D;outline:none"/>
+        <textarea placeholder="Вопрос (необязательно)" value="{{ q }}" onChange="{{ onQ }}" style="min-height:80px;border:1px solid #D6D2CB;border-radius:6px;padding:12px 14px;font-size:15px;font-family:inherit;resize:vertical" style-focus="border-color:#3D3D3D;outline:none"></textarea>
+        <button onClick="{{ onSubmit }}" style="height:52px;background:#F07828;color:#fff;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 120ms ease" style-hover="background:#E56800">Отправить</button>
+        <div style="font-size:11px;color:#9E9A94;text-align:center">Нажимая кнопку, вы соглашаетесь на <a href="soglasie.dc.html" style="color:#9E9A94">обработку персональных данных</a></div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { openFaq: 0, sent: false, name: '', phone: '', q: '' };
+  static DATA = {
+    'bukhgalterskoe-obsluzhivanie': {
+      name: 'Бухгалтерское обслуживание', photoId: 'svc-buh',
+      lead: 'Полное ведение учёта под ключ: отчётность сдана вовремя, налоги посчитаны верно, банк и первичка под контролем.',
+      includes: ['Ведение учёта в 1С', 'Расчёт налогов и взносов', 'Сдача отчётности в ФНС, СФР, Росстат', 'Работа с банк-клиентом и платежами', 'Обработка первичных документов', 'Сверки с ФНС и контрагентами', 'Ответы на требования ФНС', 'Консультации по текущим вопросам'],
+      audience: [
+        { who: 'ИП на УСН', why: 'Забираем всю рутину: книга учёта, декларация, взносы — без вашего участия.' },
+        { who: 'ООО на ОСНО', why: 'НДС, прибыль, баланс — полный цикл с контролем налоговой нагрузки.' },
+        { who: 'Стартап', why: 'Поставим учёт с нуля и настроим процессы, пока вы растёте.' },
+        { who: 'Компания с ВЭД', why: 'Валютный контроль и импорт в связке с основным учётом.' },
+      ],
+      faq: [
+        { q: 'Как передать вам учёт от прошлого бухгалтера?', a: 'Запросим базу 1С и первичку, проведём аудит остатков и восстановим пробелы. Переход занимает 1–2 недели без остановки работы.' },
+        { q: 'Нужно ли приезжать в офис?', a: 'Нет, работаем полностью удалённо: документы через ЭДО, связь в мессенджерах и по телефону.' },
+        { q: 'Кто отвечает за ошибки?', a: 'Наша профессиональная ответственность застрахована. Штрафы по нашей вине компенсируем.' },
+        { q: 'Какая система налогообложения мне выгоднее?', a: 'Посчитаем нагрузку на УСН 6%, УСН 15%, АУСН и ОСНО по вашим оборотам и предложим оптимальную.' },
+        { q: 'Можно ли начать в середине года?', a: 'Да. Примем дела на любом этапе, включая период перед отчётностью.' },
+      ],
+    },
+    'nalogovoe-konsultirovanie': {
+      name: 'Налоговое консультирование', photoId: 'svc-nalog',
+      lead: 'Законно снижаем налоговую нагрузку, отвечаем на требования ФНС и сопровождаем проверки.',
+      includes: ['Анализ налоговой нагрузки', 'Выбор системы налогообложения', 'Ответы на требования ФНС', 'Сопровождение камеральных проверок', 'Возврат переплат по налогам', 'Налоговое планирование на год'],
+      audience: [
+        { who: 'ИП на УСН', why: 'Проверим, не переплачиваете ли на текущем режиме.' },
+        { who: 'ООО на ОСНО', why: 'Оптимизация НДС и налога на прибыль в рамках закона.' },
+        { who: 'Растущий бизнес', why: 'Поможем не слететь с УСН при росте оборотов.' },
+        { who: 'Получившие требование ФНС', why: 'Подготовим грамотный ответ и защитим позицию.' },
+      ],
+      faq: [
+        { q: 'Это законная оптимизация?', a: 'Да, работаем только с инструментами, прямо предусмотренными НК РФ: режимы, льготы, вычеты, структура сделок.' },
+        { q: 'Пришло требование из ФНС — что делать?', a: 'Не отвечать наспех. Пришлите нам требование — оценим риски и подготовим ответ в срок.' },
+        { q: 'Как возвращаете переплаты?', a: 'Сверяемся с ФНС, находим переплату, подаём заявление на возврат или зачёт.' },
+        { q: 'Разовая консультация возможна?', a: 'Да, консультируем и разово — по часовой ставке.' },
+        { q: 'Сопровождаете выездные проверки?', a: 'Да, от подготовки документов до обжалования акта.' },
+      ],
+    },
+    'kadrovyi-uchet': {
+      name: 'Кадровый учёт', photoId: 'svc-kadry',
+      lead: 'Кадровый учёт на аутсорсинге: приём, увольнение, отпуска, больничные и отчётность по сотрудникам — без штрафов ГИТ.',
+      includes: ['Приём и увольнение сотрудников', 'Трудовые договоры и допсоглашения', 'Электронные трудовые книжки, ЕФС-1', 'Отпуска, больничные, декреты', 'Расчёт зарплаты и взносов', 'Воинский учёт', 'Кадровые ЛНА и графики', 'Работа с иностранными сотрудниками'],
+      audience: [
+        { who: 'ООО 10–50 сотрудников', why: 'Полное ведение кадров дешевле штатного кадровика.' },
+        { who: 'ИП с первыми сотрудниками', why: 'Оформим приём правильно с первого человека.' },
+        { who: 'Компании с иностранцами', why: 'Миграционный учёт и уведомления МВД без просрочек.' },
+        { who: 'Удалённые команды', why: 'Дистанционные трудовые договоры и ЭДО с сотрудниками.' },
+      ],
+      faq: [
+        { q: 'Что будет, если кадры не вести?', a: 'Штрафы ГИТ до 50 000 ₽ за каждое нарушение, риски при спорах с сотрудниками.' },
+        { q: 'Ведёте воинский учёт?', a: 'Да, ставим на учёт, сдаём отчётность в военкоматы.' },
+        { q: 'Можно передать только кадры, без бухгалтерии?', a: 'Да, кадровый учёт доступен как отдельная услуга.' },
+        { q: 'Как оформляете удалённых сотрудников?', a: 'Дистанционные договоры по ТК РФ, КЭДО.' },
+        { q: 'Восстановите запущенный кадровый учёт?', a: 'Да, проведём аудит и восстановим документы задним числом, где это законно.' },
+      ],
+    },
+    'upravlencheskii-uchet': {
+      name: 'Управленческий учёт', photoId: 'svc-upr',
+      lead: 'P&L, ДДС и платёжный календарь: собственник видит реальную прибыль и управляет деньгами, а не догадками.',
+      includes: ['Отчёт о прибылях и убытках (P&L)', 'Отчёт о движении денег (ДДС)', 'Платёжный календарь', 'Учёт по проектам и направлениям', 'Расчёт юнит-экономики', 'Ежемесячный разбор цифр с вами'],
+      audience: [
+        { who: 'Собственник', why: 'Понимание реальной прибыли, а не остатка на счёте.' },
+        { who: 'Растущий бизнес', why: 'Контроль кассовых разрывов до того, как они случились.' },
+        { who: 'Несколько направлений', why: 'Видно, какое направление зарабатывает, а какое тянет вниз.' },
+        { who: 'Перед привлечением инвестиций', why: 'Прозрачная отчётность для инвестора или банка.' },
+      ],
+      faq: [
+        { q: 'Чем управленческий учёт отличается от бухгалтерского?', a: 'Бухгалтерский — для государства, управленческий — для решений собственника: реальная прибыль, деньги, эффективность.' },
+        { q: 'В чём ведёте учёт?', a: 'В удобном вам инструменте: 1С, Google Sheets, специализированные сервисы.' },
+        { q: 'Как быстро появятся первые отчёты?', a: 'Первый P&L и ДДС — через месяц после старта.' },
+        { q: 'Нужно ли это малому бизнесу?', a: 'Если оборот выше 1 млн ₽/мес — уже да: цена ошибки растёт быстрее оборота.' },
+        { q: 'Поможете с бюджетированием?', a: 'Да, соберём бюджет на год и будем сверять план с фактом.' },
+      ],
+    },
+    'ved': {
+      name: 'ВЭД', photoId: 'svc-ved',
+      lead: 'Внешнеэкономическая деятельность без валютных штрафов: контракты, платежи, таможня и отчётность.',
+      includes: ['Валютный контроль и учёт контрактов', 'Постановка контрактов на учёт в банке', 'Работа с нерезидентами', 'Учёт импорта и экспорта', 'НДС при импорте, косвенные налоги ЕАЭС', 'Подтверждение ставки 0% при экспорте'],
+      audience: [
+        { who: 'Импортёры', why: 'Таможенный НДС, курсовые разницы, учёт себестоимости.' },
+        { who: 'Экспортёры', why: 'Подтверждение нулевой ставки НДС без потерь.' },
+        { who: 'Работа с фрилансерами за рубежом', why: 'Правильные формулировки контрактов и платежи.' },
+        { who: 'Селлеры на зарубежных площадках', why: 'Учёт выручки в валюте и обязательная продажа.' },
+      ],
+      faq: [
+        { q: 'Какие штрафы грозят за нарушение валютного контроля?', a: 'До 100% суммы операции. Поэтому контракты и сроки репатриации контролируем особенно жёстко.' },
+        { q: 'Работаете с платежами в дружественные юрисдикции?', a: 'Да, сопровождаем расчёты в юанях, дирхамах и через платёжных агентов.' },
+        { q: 'Поможете поставить контракт на учёт?', a: 'Да, подготовим документы для банка и поставим контракт на учёт.' },
+        { q: 'Считаете курсовые разницы?', a: 'Да, автоматически в 1С по курсу ЦБ на каждую дату.' },
+        { q: 'Что с НДС при импорте из ЕАЭС?', a: 'Сдаём заявление о ввозе и декларацию по косвенным налогам до 20 числа.' },
+      ],
+    },
+    'registraciya-i-likvidaciya': {
+      name: 'Регистрация и ликвидация', photoId: 'svc-reg',
+      lead: 'Откроем ИП или ООО за 3 дня без визита в налоговую. Закроем бизнес чисто — без долгов и последствий.',
+      includes: ['Регистрация ИП и ООО под ключ', 'Подбор ОКВЭД и системы налогообложения', 'Электронная подача без госпошлины', 'Открытие расчётного счёта', 'Ликвидация ИП и ООО', 'Подготовка ликвидационных балансов'],
+      audience: [
+        { who: 'Начинающий предприниматель', why: 'Всё оформим и сразу поставим учёт — старт без ошибок.' },
+        { who: 'Открытие второго юрлица', why: 'Структура без рисков дробления.' },
+        { who: 'Закрытие неактивного ООО', why: 'Официальная ликвидация вместо «бросить» и получить дисквалификацию.' },
+        { who: 'Смена формы: ИП → ООО', why: 'Переведём бизнес аккуратно, без налоговых потерь.' },
+      ],
+      faq: [
+        { q: 'Сколько занимает регистрация?', a: '3 рабочих дня в ФНС при электронной подаче. Документы готовим за 1 день.' },
+        { q: 'Нужно ли платить госпошлину?', a: 'При электронной подаче с ЭЦП — нет.' },
+        { q: 'Сколько длится ликвидация ООО?', a: 'Добровольная — 4–6 месяцев с учётом публикаций и сверок.' },
+        { q: 'Поможете выбрать между ИП и ООО?', a: 'Да, сравним по налогам, ответственности и выводу прибыли под ваш кейс.' },
+        { q: 'Что делать с долгами при закрытии?', a: 'Проведём сверку, реструктуризируем или закроем — без «хвостов» в ФНС.' },
+      ],
+    },
+  };
+  get slug() {
+    const p = new URLSearchParams(location.search).get('s');
+    return Component.DATA[p] ? p : 'bukhgalterskoe-obsluzhivanie';
+  }
+  renderVals() {
+    const svc = Component.DATA[this.slug];
+    const plans = [
+      { name: 'Базовая', price: 'от 5 000 ₽/мес', desc: 'Учёт, налоги, отчётность для небольшого бизнеса без сотрудников.' },
+      { name: 'Стандарт', price: 'от 15 000 ₽/мес', desc: 'Плюс приоритетный ответ бухгалтера и налоговый менеджмент.' },
+      { name: 'Оптима', price: 'от 60 000 ₽/мес', desc: 'Плюс управленческий учёт: P&L, ДДС, платёжный календарь.' },
+    ];
+    return {
+      svc: { ...svc, plans },
+      faqItems: svc.faq.map((f, i) => ({
+        ...f, open: this.state.openFaq === i, mark: this.state.openFaq === i ? '−' : '+',
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i }),
+      })),
+      sent: this.state.sent, notSent: !this.state.sent,
+      name: this.state.name, phone: this.state.phone, q: this.state.q,
+      onName: e => this.setState({ name: e.target.value }),
+      onPhone: e => this.setState({ phone: e.target.value }),
+      onQ: e => this.setState({ q: e.target.value }),
+      onSubmit: () => { if (this.state.phone.trim()) this.setState({ sent: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

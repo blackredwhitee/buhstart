@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
+<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="max-width:1100px;margin:0 auto;padding:60px 24px 32px">
+  <div style="font-size:13px;color:#6B6B6B;margin-bottom:16px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / Статьи</div>
+  <h1 style="margin:0 0 24px;font-size:44px;font-weight:800;letter-spacing:-0.02em">Статьи</h1>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <sc-for list="{{ tags }}" as="t" hint-placeholder-count="7">
+      <button onClick="{{ t.pick }}" style="height:36px;padding:0 16px;border-radius:18px;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:all 120ms ease" style-hover="border-color:#F07828">{{ t.name }}</button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1100px;margin:0 auto;padding:16px 24px 80px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+      <a href="article.dc.html" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease" style-hover="box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px)">
+        <div style="height:200px;background:{{ p.cover }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:38px;font-weight:800">{{ p.glyph }}</div>
+        <div style="padding:20px 22px">
+          <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:12px">{{ p.tag }}</span>
+          <div style="font-size:19px;font-weight:600;line-height:1.4;margin-bottom:10px">{{ p.title }}</div>
+          <div style="font-size:13px;color:#6B6B6B;line-height:1.6;margin-bottom:12px">{{ p.teaser }}</div>
+          <div style="font-size:12px;color:#6B6B6B">{{ p.date }} · {{ p.read }}</div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tag: 'Все' };
+  static POSTS = [
+    { tag: 'УСН', cover: '#3D3D3D', glyph: 'УСН', title: 'УСН в 2026 году: лимиты, ставки и что изменилось', teaser: 'Новые лимиты доходов, правила слёта с упрощёнки и переходные положения.', date: '10 июля 2026', read: '7 мин' },
+    { tag: 'ОСНО', cover: '#F07828', glyph: 'НДС', title: 'НДС 22%: как подготовиться к новой ставке', teaser: 'Что пересчитать в договорах, ценах и учётной политике до конца года.', date: '2 июля 2026', read: '5 мин' },
+    { tag: 'ВЭД', cover: '#6B6B6B', glyph: 'ВЭД', title: 'Валютный контроль для ИП: пошаговая инструкция', teaser: 'Постановка контракта на учёт, сроки репатриации и типичные штрафы.', date: '24 июня 2026', read: '9 мин' },
+    { tag: 'Кадры', cover: '#3D3D3D', glyph: 'КДР', title: 'КЭДО в 2026: как перевести сотрудников на электронные документы', teaser: 'Пошаговый план перехода и подводные камни при увольнениях.', date: '15 июня 2026', read: '6 мин' },
+    { tag: 'Отчётность', cover: '#F07828', glyph: 'ЕФС', title: 'ЕФС-1: полный календарь сдачи на 2026 год', teaser: 'Все подразделы формы, сроки и штрафы за просрочку.', date: '5 июня 2026', read: '4 мин' },
+    { tag: 'Изменения закона', cover: '#6B6B6B', glyph: '152', title: 'Персональные данные: что изменилось для малого бизнеса', teaser: 'Новые требования РКН к операторам ПДн и как им соответствовать.', date: '28 мая 2026', read: '8 мин' },
+  ];
+  renderVals() {
+    const names = ['Все', 'УСН', 'ОСНО', 'Кадры', 'ВЭД', 'Отчётность', 'Изменения закона'];
+    return {
+      tags: names.map(name => {
+        const on = this.state.tag === name;
+        return { name, bg: on ? '#F07828' : '#fff', border: on ? '#F07828' : '#E8E8E8', color: on ? '#fff' : '#3D3D3D', pick: () => this.setState({ tag: name }) };
+      }),
+      posts: Component.POSTS.filter(p => this.state.tag === 'Все' || p.tag === this.state.tag),
+    };
+  }
+}
+</script>
+</body>
+</html>

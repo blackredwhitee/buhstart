@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
+<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="max-width:1100px;margin:0 auto;padding:72px 24px 64px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center">
+  <div>
+    <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#F07828;margin-bottom:16px">Бухгалтерское сопровождение в Москве</div>
+    <h1 style="margin:0 0 20px;font-size:52px;line-height:1.12;font-weight:800;letter-spacing:-0.02em">Ваш бизнес — наша зона ответственности</h1>
+    <p style="margin:0 0 32px;font-size:18px;line-height:1.6;color:#6B6B6B;max-width:480px">Профессиональная бухгалтерия для ИП и ООО. Работаем удалённо по всей России. Отвечаем в течение 2 часов.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="calculator.dc.html" style="text-decoration:none;background:#F07828;color:#fff;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;letter-spacing:0.02em;transition:all 120ms ease" style-hover="background:#E56800;transform:translateY(-1px)">Рассчитать стоимость</a>
+      <a href="#zapis" style="text-decoration:none;border:1.5px solid #3D3D3D;color:#3D3D3D;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#3D3D3D;color:#fff">Записаться на консультацию</a>
+    </div>
+    <div style="display:flex;gap:32px;margin-top:44px;flex-wrap:wrap">
+      <div><div style="font-size:26px;font-weight:800;color:#F07828">23 года</div><div style="font-size:13px;color:#6B6B6B">на рынке</div></div>
+      <div><div style="font-size:26px;font-weight:800;color:#F07828">350+</div><div style="font-size:13px;color:#6B6B6B">клиентов</div></div>
+      <div><div style="font-size:26px;font-weight:800;color:#F07828">2 часа</div><div style="font-size:13px;color:#6B6B6B">время ответа</div></div>
+      <div><div style="font-size:26px;font-weight:800;color:#F07828">0 ₽</div><div style="font-size:13px;color:#6B6B6B">штрафов по нашей вине</div></div>
+    </div>
+  </div>
+  <div style="height:460px">
+    <x-import component-from-global-scope="image-slot" from="image-slot.js" id="hero-photo" shape="rounded" radius="12" placeholder="Фото главного бухгалтера или команды" hint-size="100%,460px" style="width:100%;height:460px"></x-import>
+  </div>
+</section>
+
+<section style="background:#F5F5F5;border-top:1px solid #E8E8E8;border-bottom:1px solid #E8E8E8">
+  <div style="max-width:1100px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px;color:#3D3D3D;font-weight:500">
+    <span>Работаем с 2003 года</span><span>1С:Партнёр</span><span>Страхование профответственности</span><span>УСН · ОСНО · АУСН · Патент</span><span>НДС и ВЭД</span>
+  </div>
+</section>
+
+<section id="uslugi" style="max-width:1100px;margin:0 auto;padding:80px 24px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:36px">
+    <h2 style="margin:0;font-size:36px;font-weight:800;letter-spacing:-0.02em">Что мы делаем</h2>
+    <a href="uslugi.dc.html" style="font-weight:600;font-size:15px;text-decoration:none" style-hover="text-decoration:underline">Все услуги →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+    <a href="{{ s.href }}" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;padding:26px 24px;display:block;transition:all 150ms ease;border-bottom:3px solid #E8E8E8" style-hover="box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px);border-bottom-color:#F07828">
+      <div style="width:40px;height:40px;border-radius:8px;background:#FEF0E6;color:#F07828;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;margin-bottom:16px">{{ s.glyph }}</div>
+      <div style="font-size:19px;font-weight:600;margin-bottom:8px">{{ s.name }}</div>
+      <div style="font-size:13px;line-height:1.6;color:#6B6B6B;margin-bottom:12px">{{ s.desc }}</div>
+      <div style="font-size:13px;font-weight:600;color:#F07828">Подробнее →</div>
+    </a>
+  </sc-for>
+  </div>
+</section>
+
+<section style="background:#3D3D3D;color:#fff">
+  <div style="max-width:1100px;margin:0 auto;padding:72px 24px">
+    <h2 style="margin:0 0 40px;font-size:36px;font-weight:800;letter-spacing:-0.02em">Чем мы отличаемся</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 48px">
+      <div style="display:flex;gap:16px"><div style="width:10px;height:10px;border-radius:50%;background:#F07828;margin-top:8px;flex-shrink:0"></div><div><div style="font-size:19px;font-weight:600;margin-bottom:6px">Персональный бухгалтер</div><div style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.65)">Не колл-центр и не чат-бот — один специалист, который знает ваш бизнес.</div></div></div>
+      <div style="display:flex;gap:16px"><div style="width:10px;height:10px;border-radius:50%;background:#F07828;margin-top:8px;flex-shrink:0"></div><div><div style="font-size:19px;font-weight:600;margin-bottom:6px">Гарантия возврата переплат</div><div style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.65)">Найдём и вернём переплаченные налоги — это прописано в договоре.</div></div></div>
+      <div style="display:flex;gap:16px"><div style="width:10px;height:10px;border-radius:50%;background:#F07828;margin-top:8px;flex-shrink:0"></div><div><div style="font-size:19px;font-weight:600;margin-bottom:6px">Ответ в течение 2 часов</div><div style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.65)">В рабочее время ваш вопрос не останется без ответа дольше двух часов.</div></div></div>
+      <div style="display:flex;gap:16px"><div style="width:10px;height:10px;border-radius:50%;background:#F07828;margin-top:8px;flex-shrink:0"></div><div><div style="font-size:19px;font-weight:600;margin-bottom:6px">Страхование ответственности</div><div style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.65)">Профессиональная ответственность застрахована — ваши риски покрыты.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="calculator" style="max-width:1100px;margin:0 auto;padding:80px 24px;text-align:center">
+  <h2 style="margin:0 0 12px;font-size:36px;font-weight:800;letter-spacing:-0.02em">Подберём услуги под вашу ситуацию</h2>
+  <p style="margin:0 auto 36px;font-size:17px;color:#6B6B6B;max-width:560px;line-height:1.6">9 вопросов — и вы узнаете, какое обслуживание подходит именно вашему бизнесу</p>
+  <div style="display:flex;justify-content:center;gap:40px;margin-bottom:36px;flex-wrap:wrap">
+    <div style="max-width:180px"><div style="width:44px;height:44px;border-radius:50%;background:#F07828;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">1</div><div style="font-size:14px;color:#3D3D3D;font-weight:500">Ответьте на вопросы</div></div>
+    <div style="max-width:180px"><div style="width:44px;height:44px;border-radius:50%;background:#F07828;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">2</div><div style="font-size:14px;color:#3D3D3D;font-weight:500">Получите рекомендации</div></div>
+    <div style="max-width:180px"><div style="width:44px;height:44px;border-radius:50%;background:#F07828;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">3</div><div style="font-size:14px;color:#3D3D3D;font-weight:500">Обсудите с бухгалтером</div></div>
+  </div>
+  <a href="calculator.dc.html" style="text-decoration:none;background:#F07828;color:#fff;font-weight:600;font-size:16px;height:52px;padding:0 30px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#E56800;transform:translateY(-1px)">Начать расчёт</a>
+</section>
+
+<section id="team" style="background:#F5F5F5;border-top:1px solid #E8E8E8;border-bottom:1px solid #E8E8E8">
+  <div style="max-width:1100px;margin:0 auto;padding:80px 24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:36px">
+      <h2 style="margin:0;font-size:36px;font-weight:800;letter-spacing:-0.02em">Ваши бухгалтеры</h2>
+      <a href="team.dc.html" style="font-weight:600;font-size:15px;text-decoration:none" style-hover="text-decoration:underline">Познакомиться с командой →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+    <sc-for list="{{ teamTeaser }}" as="m" hint-placeholder-count="4">
+      <div style="background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden">
+        <x-import component-from-global-scope="image-slot" from="image-slot.js" id="{{ m.photoId }}" shape="rect" placeholder="Фото сотрудника" hint-size="100%,220px" style="width:100%;height:220px;display:block"></x-import>
+        <div style="padding:18px 20px">
+          <div style="font-size:16px;font-weight:600">{{ m.name }}</div>
+          <div style="font-size:13px;color:#6B6B6B;margin:3px 0 8px">{{ m.role }}</div>
+          <div style="font-size:12px;color:#F07828;font-weight:600">{{ m.exp }}</div>
+        </div>
+      </div>
+    </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1100px;margin:0 auto;padding:80px 24px">
+  <h2 style="margin:0 0 36px;font-size:36px;font-weight:800;letter-spacing:-0.02em">Что говорят клиенты</h2>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #E8E8E8;border-radius:10px;padding:20px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:40px;height:40px;border-radius:50%;background:#3D3D3D;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center">{{ r.initial }}</div>
+            <div><div style="font-size:14px;font-weight:600">{{ r.name }}</div><div style="font-size:12px;color:#6B6B6B">{{ r.date }}</div></div>
+          </div>
+          <div style="color:#F07828;font-size:14px;letter-spacing:2px;margin-bottom:8px">★★★★★</div>
+          <div style="font-size:13px;line-height:1.6;color:#3D3D3D">{{ r.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#F5F5F5;border:1px solid #E8E8E8;border-radius:10px;padding:28px;text-align:center">
+      <div style="font-size:56px;font-weight:800;color:#1A1A1A;line-height:1">4.9</div>
+      <div style="color:#F07828;font-size:18px;letter-spacing:3px;margin:8px 0">★★★★★</div>
+      <div style="font-size:13px;color:#6B6B6B;margin-bottom:18px">87 отзывов на Яндекс.Картах</div>
+      <a href="#" style="text-decoration:none;border:1.5px solid #3D3D3D;color:#3D3D3D;font-weight:600;font-size:14px;height:44px;padding:0 20px;border-radius:6px;display:inline-flex;align-items:center" style-hover="background:#3D3D3D;color:#fff">Все отзывы</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:#F5F5F5;border-top:1px solid #E8E8E8">
+  <div style="max-width:1100px;margin:0 auto;padding:80px 24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:36px">
+      <h2 style="margin:0;font-size:36px;font-weight:800;letter-spacing:-0.02em">Полезные материалы</h2>
+      <a href="blog.dc.html" style="font-weight:600;font-size:15px;text-decoration:none" style-hover="text-decoration:underline">Все статьи →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <sc-for list="{{ articlesTeaser }}" as="a" hint-placeholder-count="3">
+      <a href="{{ a.href }}" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease" style-hover="box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px)">
+        <div style="height:160px;background:{{ a.cover }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;font-weight:800">{{ a.glyph }}</div>
+        <div style="padding:18px 20px">
+          <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:10px">{{ a.tag }}</span>
+          <div style="font-size:16px;font-weight:600;line-height:1.4;margin-bottom:8px">{{ a.title }}</div>
+          <div style="font-size:12px;color:#6B6B6B">{{ a.date }} · {{ a.read }}</div>
+        </div>
+      </a>
+    </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="zapis" style="background:#3D3D3D">
+  <div style="max-width:1100px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div style="color:#fff">
+      <h2 style="margin:0 0 14px;font-size:36px;font-weight:800;letter-spacing:-0.02em">Запишитесь на бесплатную консультацию</h2>
+      <p style="margin:0 0 24px;font-size:16px;line-height:1.65;color:rgba(255,255,255,0.7)">Разберём вашу ситуацию и предложим оптимальное решение. Без обязательств.</p>
+      <div style="font-size:14px;color:rgba(255,255,255,0.7)">Или напишите нам: <a href="#" style="color:#FF9A50;font-weight:600">Telegram</a> · <a href="#" style="color:#FF9A50;font-weight:600">WhatsApp</a> · <a href="tel:+74955070979" style="color:#FF9A50;font-weight:600">+7 (495) 507-09-79</a></div>
+    </div>
+    <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border-radius:12px;padding:48px 32px;text-align:center">
+        <div style="width:56px;height:56px;border-radius:50%;background:#2D7A4F;color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">✓</div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:8px">Отлично!</div>
+        <div style="font-size:14px;color:#6B6B6B">Мы свяжемся с вами в течение 2 часов в рабочее время.</div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ formNotSent }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:14px">
+        <input placeholder="Имя" value="{{ formName }}" onChange="{{ onName }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit" style-focus="border-color:#3D3D3D;box-shadow:0 0 0 3px rgba(61,61,61,0.12);outline:none"/>
+        <input placeholder="Телефон или WhatsApp" value="{{ formPhone }}" onChange="{{ onPhone }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit" style-focus="border-color:#3D3D3D;box-shadow:0 0 0 3px rgba(61,61,61,0.12);outline:none"/>
+        <input type="datetime-local" value="{{ formTime }}" onChange="{{ onTime }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit;color:#6B6B6B" style-focus="border-color:#3D3D3D;outline:none"/>
+        <button onClick="{{ onSubmit }}" style="height:52px;background:#F07828;color:#fff;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:0.02em;transition:all 120ms ease" style-hover="background:#E56800">Записаться</button>
+        <div style="font-size:11px;color:#9E9A94;text-align:center">Нажимая кнопку, вы соглашаетесь с <a href="privacy.dc.html" style="color:#9E9A94">политикой конфиденциальности</a></div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, name: '', phone: '', time: '' };
+  renderVals() {
+    return {
+      services: [
+        { glyph: '₽', name: 'Бухгалтерское обслуживание', desc: 'Полное ведение учёта, отчётность в ФНС и фонды, банк-клиент.', href: 'usluga.dc.html?s=bukhgalterskoe-obsluzhivanie' },
+        { glyph: '%', name: 'Налоговое консультирование', desc: 'Оптимизация налогов, выбор системы, ответы на требования ФНС.', href: 'usluga.dc.html?s=nalogovoe-konsultirovanie' },
+        { glyph: 'К', name: 'Кадровый учёт', desc: 'Приём и увольнение, отпуска, больничные, воинский учёт.', href: 'usluga.dc.html?s=kadrovyi-uchet' },
+        { glyph: 'У', name: 'Управленческий учёт', desc: 'P&L, ДДС, платёжный календарь — цифры для решений.', href: 'usluga.dc.html?s=upravlencheskii-uchet' },
+        { glyph: 'В', name: 'ВЭД', desc: 'Валютный контроль, импорт/экспорт, работа с нерезидентами.', href: 'usluga.dc.html?s=ved' },
+        { glyph: 'Р', name: 'Регистрация и ликвидация', desc: 'Откроем ИП или ООО за 3 дня, закроем без долгов и штрафов.', href: 'usluga.dc.html?s=registraciya-i-likvidaciya' },
+      ],
+      teamTeaser: [
+        { photoId: 'team-1', name: 'Елена Соколова', role: 'Главный бухгалтер', exp: '18 лет опыта' },
+        { photoId: 'team-2', name: 'Марина Ковалёва', role: 'Бухгалтер по ОСНО и НДС', exp: '12 лет опыта' },
+        { photoId: 'team-3', name: 'Ольга Тарасова', role: 'Специалист по кадрам', exp: '9 лет опыта' },
+        { photoId: 'team-4', name: 'Дмитрий Орлов', role: 'Налоговый консультант', exp: '14 лет опыта' },
+      ],
+      reviews: [
+        { initial: 'А', name: 'Андрей В.', date: 'Май 2026', text: 'Перешли с прошлой бухгалтерии год назад. Нашли переплату по УСН и вернули — уже окупили год обслуживания.' },
+        { initial: 'С', name: 'Светлана М.', date: 'Апрель 2026', text: 'Отвечают действительно быстро. Все требования ФНС закрывают сами, меня не дёргают по мелочам.' },
+        { initial: 'И', name: 'Игорь П.', date: 'Март 2026', text: 'Открывал ООО с их помощью — за 3 дня всё готово, сразу поставили учёт. Очень удобно, что всё удалённо.' },
+        { initial: 'Н', name: 'Наталья К.', date: 'Февраль 2026', text: 'Ведут наш ВЭД: валютный контроль, паспорта сделок. Ни одного штрафа за два года работы.' },
+      ],
+      articlesTeaser: [
+        { href: 'article.dc.html', cover: '#3D3D3D', glyph: 'УСН', tag: 'УСН', title: 'УСН в 2026 году: лимиты, ставки и что изменилось', date: '10 июля 2026', read: '7 мин' },
+        { href: 'article.dc.html', cover: '#F07828', glyph: 'НДС', tag: 'ОСНО', title: 'НДС 22%: как подготовиться к новой ставке', date: '2 июля 2026', read: '5 мин' },
+        { href: 'article.dc.html', cover: '#6B6B6B', glyph: 'ВЭД', tag: 'ВЭД', title: 'Валютный контроль для ИП: пошаговая инструкция', date: '24 июня 2026', read: '9 мин' },
+      ],
+      formSent: this.state.sent, formNotSent: !this.state.sent,
+      formName: this.state.name, formPhone: this.state.phone, formTime: this.state.time,
+      onName: e => this.setState({ name: e.target.value }),
+      onPhone: e => this.setState({ phone: e.target.value }),
+      onTime: e => this.setState({ time: e.target.value }),
+      onSubmit: () => { if (this.state.phone.trim()) this.setState({ sent: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
+<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A;min-height:100vh;display:flex;flex-direction:column">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="max-width:760px;margin:0 auto;padding:56px 24px 24px;text-align:center;width:100%;box-sizing:border-box">
+  <h1 style="margin:0 0 12px;font-size:38px;font-weight:800;letter-spacing:-0.02em">Узнайте, какие услуги вам нужны</h1>
+  <p style="margin:0;font-size:16px;color:#6B6B6B;line-height:1.6">9 вопросов — и мы подберём оптимальный пакет под вашу ситуацию</p>
+</section>
+
+<section style="max-width:760px;margin:0 auto;padding:32px 24px 80px;width:100%;box-sizing:border-box;flex:1">
+  <sc-if value="{{ inQuiz }}" hint-placeholder-val="{{ true }}">
+    <div style="height:6px;background:#F5F5F5;border-radius:3px;margin-bottom:12px;overflow:hidden">
+      <div style="height:100%;background:#F07828;border-radius:3px;transition:width 250ms ease;width:{{ progressPct }}"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6B6B;margin-bottom:36px">
+      <span>Шаг {{ stepNum }} из 9</span><span>{{ progressPct }}</span>
+    </div>
+    <h2 style="margin:0 0 28px;font-size:26px;font-weight:700;letter-spacing:-0.01em">{{ question }}</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <sc-for list="{{ options }}" as="o" hint-placeholder-count="4">
+        <button onClick="{{ o.pick }}" style="min-height:64px;padding:16px 20px;border:1.5px solid {{ o.border }};background:{{ o.bg }};border-radius:10px;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;text-align:left;color:#1A1A1A;transition:all 120ms ease" style-hover="border-color:#F07828;background:#FEF0E6">{{ o.label }}</button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ goBack }}" style="margin-top:28px;background:none;border:none;color:#6B6B6B;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;padding:8px 0" style-hover="color:#F07828">← Назад</button>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ inResult }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#F5F5F5;border:1px solid #E8E8E8;border-radius:12px;padding:36px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#F07828;margin-bottom:12px">Результат подбора</div>
+      <h2 style="margin:0 0 22px;font-size:28px;font-weight:800;letter-spacing:-0.01em">Для вашей ситуации подойдут:</h2>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:14px">
+        <sc-for list="{{ recs }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #E8E8E8;border-radius:8px;padding:16px 18px">
+            <span style="color:#2D7A4F;font-weight:800">✓</span>
+            <span style="font-size:16px;font-weight:600">{{ r }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0 0 28px;font-size:13px;color:#6B6B6B">Точный расчёт стоимости — на консультации с бухгалтером.</p>
+      <sc-if value="{{ leadSent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border-radius:10px;padding:32px;text-align:center;border:1px solid #E8E8E8">
+          <div style="width:52px;height:52px;border-radius:50%;background:#2D7A4F;color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">✓</div>
+          <div style="font-size:17px;font-weight:700">Спасибо! Бухгалтер свяжется с вами с точным расчётом.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ leadNotSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <input placeholder="Имя" value="{{ leadName }}" onChange="{{ onLeadName }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit" style-focus="border-color:#3D3D3D;outline:none"/>
+          <input placeholder="Телефон" value="{{ leadPhone }}" onChange="{{ onLeadPhone }}" style="height:48px;border:1px solid #D6D2CB;border-radius:6px;padding:0 14px;font-size:15px;font-family:inherit" style-focus="border-color:#3D3D3D;outline:none"/>
+          <button onClick="{{ submitLead }}" style="height:52px;background:#F07828;color:#fff;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 120ms ease" style-hover="background:#E56800">Получить точный расчёт</button>
+          <div style="font-size:11px;color:#9E9A94;text-align:center">Нажимая кнопку, вы соглашаетесь на <a href="soglasie.dc.html" style="color:#9E9A94">обработку персональных данных</a></div>
+        </div>
+      </sc-if>
+      <button onClick="{{ restart }}" style="margin-top:20px;background:none;border:none;color:#6B6B6B;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="color:#F07828">Пройти заново</button>
+    </div>
+  </sc-if>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 0, answers: {}, leadName: '', leadPhone: '', leadSent: false };
+  static STEPS = [
+    { key: 'entity', q: 'Какая у вас форма собственности?', opts: ['ИП', 'ООО'] },
+    { key: 'zero', q: 'Нужна ли только нулевая отчётность?', opts: ['Да, деятельности нет', 'Нет, бизнес работает'] },
+    { key: 'tax', q: 'Какая система налогообложения?', opts: ['УСН 6%', 'УСН 15%', 'ОСНО', 'АУСН', 'Патент', 'Ещё не выбрал(а)'] },
+    { key: 'niche', q: 'Чем занимается бизнес?', opts: ['Услуги', 'Розничная торговля', 'Оптовая торговля', 'Маркетплейсы', 'Производство', 'Строительство', 'Общепит', 'Другое'] },
+    { key: 'ops', q: 'Сколько операций в месяц?', opts: ['До 30', '30–100', '100–300', 'Больше 300'] },
+    { key: 'staff', q: 'Сколько сотрудников?', opts: ['Нет', '1–5', '6–15', '16 и больше'] },
+    { key: 'hr', q: 'Нужен ли кадровый учёт?', opts: ['Да', 'Нет', 'Не знаю'] },
+    { key: 'mgmt', q: 'Нужен ли управленческий учёт?', opts: ['Да', 'Нет', 'Не знаю'] },
+    { key: 'ved', q: 'Есть ли внешнеэкономическая деятельность?', opts: ['Да', 'Нет'] },
+  ];
+  buildRecs() {
+    const a = this.state.answers, recs = [];
+    if (a.zero === 'Да, деятельности нет') {
+      recs.push('Нулевая отчётность (' + (a.entity || 'ИП') + ')');
+      recs.push('Налоговое консультирование');
+      return recs;
+    }
+    recs.push('Бухгалтерское обслуживание' + (a.tax && a.tax !== 'Ещё не выбрал(а)' ? ' (' + a.tax + ')' : ''));
+    if (a.tax === 'Ещё не выбрал(а)') recs.push('Налоговое консультирование — подбор системы');
+    if (a.staff && a.staff !== 'Нет' || a.hr === 'Да') recs.push('Кадровый учёт');
+    if (a.mgmt === 'Да') recs.push('Управленческий учёт');
+    if (a.ved === 'Да') recs.push('ВЭД / Валютные расчёты');
+    if (a.entity === 'ООО') recs.push('Обслуживание ООО');
+    return recs;
+  }
+  renderVals() {
+    const s = this.state, N = Component.STEPS.length, done = s.step >= N;
+    const cur = done ? null : Component.STEPS[s.step];
+    return {
+      inQuiz: !done, inResult: done,
+      stepNum: s.step + 1,
+      progressPct: Math.round((s.step / N) * 100) + '%',
+      question: cur ? cur.q : '',
+      options: cur ? cur.opts.map(label => {
+        const sel = s.answers[cur.key] === label;
+        return {
+          label, bg: sel ? '#FEF0E6' : '#fff', border: sel ? '#F07828' : '#E8E8E8',
+          pick: () => this.setState({ answers: { ...s.answers, [cur.key]: label }, step: s.step + 1 }),
+        };
+      }) : [],
+      canBack: s.step > 0 && !done,
+      goBack: () => this.setState({ step: s.step - 1 }),
+      recs: done ? this.buildRecs() : [],
+      leadSent: s.leadSent, leadNotSent: !s.leadSent,
+      leadName: s.leadName, leadPhone: s.leadPhone,
+      onLeadName: e => this.setState({ leadName: e.target.value }),
+      onLeadPhone: e => this.setState({ leadPhone: e.target.value }),
+      submitLead: () => { if (s.leadPhone.trim()) this.setState({ leadSent: true }); },
+      restart: () => this.setState({ step: 0, answers: {}, leadSent: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

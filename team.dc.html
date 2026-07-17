@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
+<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="max-width:1100px;margin:0 auto;padding:60px 24px 48px">
+  <div style="font-size:13px;color:#6B6B6B;margin-bottom:16px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / Команда</div>
+  <h1 style="margin:0 0 14px;font-size:44px;font-weight:800;letter-spacing:-0.02em">Наша команда</h1>
+  <p style="margin:0;font-size:17px;color:#6B6B6B;max-width:560px;line-height:1.6">8 специалистов с опытом от 5 лет. С вами работают конкретные люди, а не «отдел сопровождения».</p>
+</section>
+
+<section style="max-width:1100px;margin:0 auto;padding:0 24px 72px">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <sc-for list="{{ team }}" as="m" hint-placeholder-count="6">
+      <div style="background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden">
+        <x-import component-from-global-scope="image-slot" from="image-slot.js" id="{{ m.photoId }}" shape="rect" placeholder="Живое фото сотрудника" hint-size="100%,280px" style="width:100%;height:280px;display:block"></x-import>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:600">{{ m.name }}</div>
+          <div style="font-size:13px;color:#6B6B6B;margin:4px 0 12px">{{ m.role }} · {{ m.exp }}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+            <sc-for list="{{ m.tags }}" as="t" hint-placeholder-count="2">
+              <span style="background:#F5F5F5;color:#3D3D3D;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px">{{ t }}</span>
+            </sc-for>
+          </div>
+          <div style="font-size:13px;color:#6B6B6B;line-height:1.6;font-style:italic">«{{ m.quote }}»</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#3D3D3D">
+  <div style="max-width:1100px;margin:0 auto;padding:64px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+    <div style="color:#fff">
+      <h2 style="margin:0 0 10px;font-size:32px;font-weight:800;letter-spacing:-0.02em">Пообщайтесь с нашим специалистом</h2>
+      <p style="margin:0;font-size:16px;color:rgba(255,255,255,0.7)">Зададите вопросы напрямую — до подписания договора.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="contacts.dc.html" style="text-decoration:none;background:#F07828;color:#fff;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#E56800;transform:translateY(-1px)">Записаться на консультацию</a>
+      <a href="#" style="text-decoration:none;border:1.5px solid rgba(255,255,255,0.5);color:#fff;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#fff;color:#3D3D3D">Написать в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      team: [
+        { photoId: 'team-1', name: 'Елена Соколова', role: 'Главный бухгалтер', exp: '18 лет', tags: ['ОСНО', 'НДС', 'Аудит'], quote: 'Хорошая бухгалтерия — это когда собственник о ней не думает.' },
+        { photoId: 'team-2', name: 'Марина Ковалёва', role: 'Бухгалтер по ОСНО и НДС', exp: '12 лет', tags: ['ОСНО', 'НДС'], quote: 'НДС любит точность — я люблю НДС.' },
+        { photoId: 'team-3', name: 'Ольга Тарасова', role: 'Специалист по кадрам', exp: '9 лет', tags: ['Кадры', 'КЭДО'], quote: 'Правильно оформленный сотрудник — спокойный работодатель.' },
+        { photoId: 'team-4', name: 'Дмитрий Орлов', role: 'Налоговый консультант', exp: '14 лет', tags: ['Налоги', 'Проверки'], quote: 'Каждое требование ФНС — это диалог, который можно выиграть.' },
+        { photoId: 'team-5', name: 'Анна Белова', role: 'Бухгалтер по УСН', exp: '7 лет', tags: ['УСН', 'Патент'], quote: 'Упрощёнка проста, только когда её ведут правильно.' },
+        { photoId: 'team-6', name: 'Сергей Литвинов', role: 'Специалист по ВЭД', exp: '11 лет', tags: ['ВЭД', 'Валютный контроль'], quote: 'Валютный контроль прощает только тех, кто успевает в сроки.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

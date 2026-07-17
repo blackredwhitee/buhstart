@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#fff;font-family:'Golos Text',system-ui,sans-serif} a{color:#F07828} a:hover{color:#E56800}</style></helmet>
+<div style="font-family:'Golos Text',system-ui,sans-serif;color:#1A1A1A">
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="max-width:760px;margin:0 auto;padding:60px 24px 80px">
+  <div style="font-size:13px;color:#6B6B6B;margin-bottom:16px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / Новости</div>
+  <h1 style="margin:0 0 10px;font-size:44px;font-weight:800;letter-spacing:-0.02em">Новости</h1>
+  <p style="margin:0 0 40px;font-size:16px;color:#6B6B6B">Изменения законодательства и дайджесты для предпринимателей.</p>
+  <div style="display:flex;flex-direction:column;gap:0">
+    <sc-for list="{{ news }}" as="n" hint-placeholder-count="6">
+      <a href="#" style="text-decoration:none;color:#1A1A1A;display:flex;gap:28px;padding:24px 0;border-bottom:1px solid #E8E8E8;align-items:baseline" style-hover="color:#F07828">
+        <span style="font-size:13px;color:#6B6B6B;min-width:110px;flex-shrink:0">{{ n.date }}</span>
+        <span>
+          <span style="display:block;font-size:18px;font-weight:600;line-height:1.4;margin-bottom:6px">{{ n.title }}</span>
+          <span style="display:block;font-size:14px;color:#6B6B6B;line-height:1.6">{{ n.teaser }}</span>
+        </span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      news: [
+        { date: '14 июля 2026', title: 'ФНС продлила приём уведомлений по ЕНС', teaser: 'Срок подачи уведомлений об исчисленных суммах за июль сдвинут из-за обновления сервисов ФНС.' },
+        { date: '8 июля 2026', title: 'Дайджест: главные изменения июля для ИП', teaser: 'Новые размеры взносов, обновлённые формы отчётности и изменения по патенту.' },
+        { date: '30 июня 2026', title: 'Минтруд обновил правила воинского учёта', teaser: 'Уточнены сроки уведомлений и формат сведений для военкоматов.' },
+        { date: '19 июня 2026', title: 'Каникулы по страховым взносам для новых ИП: разъяснения', teaser: 'Кто может применить льготу и какие ОКВЭД попадают под условия.' },
+        { date: '5 июня 2026', title: 'Обновлены контрольные соотношения к декларации по НДС', teaser: 'На что теперь смотрит камеральная проверка в первую очередь.' },
+        { date: '22 мая 2026', title: 'Дайджест: изменения мая для ООО', teaser: 'Отчётность в Росстат, новые штрафы за ПДн и лимиты по УСН.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
