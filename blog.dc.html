@@ -15,23 +15,19 @@
   <div style="font-size:13px;color:#6B6B6B;margin-bottom:16px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / Статьи</div>
   <h1 style="margin:0 0 24px;font-size:44px;font-weight:800;letter-spacing:-0.02em">Статьи</h1>
   <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <sc-for list="{{ tags }}" as="t" hint-placeholder-count="7">
+    <sc-for list="{{ tags }}" as="t" hint-placeholder-count="6">
       <button onClick="{{ t.pick }}" style="height:36px;padding:0 16px;border-radius:18px;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:all 120ms ease" style-hover="border-color:#F07828">{{ t.name }}</button>
     </sc-for>
   </div>
 </section>
 
 <section style="max-width:1100px;margin:0 auto;padding:16px 24px 80px">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-    <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
-      <a href="article.dc.html" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;overflow:hidden;display:block;transition:all 150ms ease" style-hover="box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px)">
-        <div style="height:200px;background:{{ p.cover }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:38px;font-weight:800">{{ p.glyph }}</div>
-        <div style="padding:20px 22px">
-          <span style="display:inline-block;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:12px">{{ p.tag }}</span>
-          <div style="font-size:19px;font-weight:600;line-height:1.4;margin-bottom:10px">{{ p.title }}</div>
-          <div style="font-size:13px;color:#6B6B6B;line-height:1.6;margin-bottom:12px">{{ p.teaser }}</div>
-          <div style="font-size:12px;color:#6B6B6B">{{ p.date }} · {{ p.read }}</div>
-        </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+    <sc-for list="{{ posts }}" as="p" hint-placeholder-count="9">
+      <a href="{{ p.href }}" target="_blank" style="text-decoration:none;color:#1A1A1A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px;transition:all 150ms ease;border-bottom:3px solid #E8E8E8" style-hover="box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px);border-bottom-color:#F07828">
+        <span style="align-self:flex-start;background:#FEF0E6;color:#B84F1A;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px">{{ p.tag }}</span>
+        <div style="font-size:17px;font-weight:600;line-height:1.45;flex:1">{{ p.title }}</div>
+        <div style="font-size:13px;font-weight:600;color:#F07828">Читать на buhstart.ru →</div>
       </a>
     </sc-for>
   </div>
@@ -44,15 +40,31 @@
 class Component extends DCLogic {
   state = { tag: 'Все' };
   static POSTS = [
-    { tag: 'УСН', cover: '#3D3D3D', glyph: 'УСН', title: 'УСН в 2026 году: лимиты, ставки и что изменилось', teaser: 'Новые лимиты доходов, правила слёта с упрощёнки и переходные положения.', date: '10 июля 2026', read: '7 мин' },
-    { tag: 'ОСНО', cover: '#F07828', glyph: 'НДС', title: 'НДС 22%: как подготовиться к новой ставке', teaser: 'Что пересчитать в договорах, ценах и учётной политике до конца года.', date: '2 июля 2026', read: '5 мин' },
-    { tag: 'ВЭД', cover: '#6B6B6B', glyph: 'ВЭД', title: 'Валютный контроль для ИП: пошаговая инструкция', teaser: 'Постановка контракта на учёт, сроки репатриации и типичные штрафы.', date: '24 июня 2026', read: '9 мин' },
-    { tag: 'Кадры', cover: '#3D3D3D', glyph: 'КДР', title: 'КЭДО в 2026: как перевести сотрудников на электронные документы', teaser: 'Пошаговый план перехода и подводные камни при увольнениях.', date: '15 июня 2026', read: '6 мин' },
-    { tag: 'Отчётность', cover: '#F07828', glyph: 'ЕФС', title: 'ЕФС-1: полный календарь сдачи на 2026 год', teaser: 'Все подразделы формы, сроки и штрафы за просрочку.', date: '5 июня 2026', read: '4 мин' },
-    { tag: 'Изменения закона', cover: '#6B6B6B', glyph: '152', title: 'Персональные данные: что изменилось для малого бизнеса', teaser: 'Новые требования РКН к операторам ПДн и как им соответствовать.', date: '28 мая 2026', read: '8 мин' },
+    { tag: 'Налоговая', title: 'Как налоговая видит ваш бизнес', href: 'https://buhstart.ru/tpost/cnye6z2of1-kak-nalogovaya-vidit-vash-biznes' },
+    { tag: 'Налоговая', title: 'Что делать, если пришло письмо из ФНС', href: 'https://buhstart.ru/tpost/918933y7o1-chto-delat-esli-prishlo-pismo-iz-fns' },
+    { tag: 'Налоги', title: 'Главные ошибки предпринимателей в налогах', href: 'https://buhstart.ru/tpost/gg5k5cyxs1-glavnie-oshibki-predprinimatelei-v-nalog' },
+    { tag: 'Финансы', title: 'Зачем предпринимателю понимать свои цифры', href: 'https://buhstart.ru/tpost/s58foxd571-zachem-predprinimatelyu-ponimat-svoi-tsi' },
+    { tag: 'Бизнес', title: 'Почему предприниматели откладывают бухгалтерию', href: 'https://buhstart.ru/tpost/v1l6jtxy71-pochemu-predprinimateli-otkladivayut-buh' },
+    { tag: 'Финансы', title: 'Куда утекают деньги в бизнесе', href: 'https://buhstart.ru/tpost/10sx017v61-kuda-utekayut-dengi-v-biznese' },
+    { tag: 'Налоговая', title: 'Почему предприниматели боятся налоговой', href: 'https://buhstart.ru/tpost/d3f7f7re01-pochemu-predprinimateli-boyatsya-nalogov' },
+    { tag: 'Бизнес', title: 'Почему предприниматели устают не от бизнеса', href: 'https://buhstart.ru/tpost/pcbt3evp01-pochemu-predprinimateli-ustayut-ne-ot-bi' },
+    { tag: 'ИП и ООО', title: 'Как делят ООО, если один партнёр уходит', href: 'https://buhstart.ru/tpost/abkl2u8bn1-kak-delyat-ooo-esli-odin-partnyor-uhodit' },
+    { tag: 'Финансы', title: 'Почему богатый бизнес может быть убыточным', href: 'https://buhstart.ru/tpost/nx0520x5c1-pochemu-bogatii-biznes-mozhet-bit-ubitoc' },
+    { tag: 'Налоги', title: 'Почему низкий налог — не всегда выгодно', href: 'https://buhstart.ru/tpost/gl75m4h951-pochemu-nizkii-nalog-ne-vsegda-vigodno' },
+    { tag: 'Налоги', title: 'Почему систему налогообложения важно выбирать правильно', href: 'https://buhstart.ru/tpost/3t5j2glf01-pochemu-sistemu-nalogooblozheniya-vazhno' },
+    { tag: 'ИП и ООО', title: 'ООО или ИП', href: 'https://buhstart.ru/tpost/m9a39ch961-ooo-ili-ip' },
+    { tag: 'Налоги', title: 'Каждый платит налоги', href: 'https://buhstart.ru/tpost/fmr3sxkvt1-kazhdii-platit-nalogi' },
+    { tag: 'ИП и ООО', title: 'ООО: когда бизнес уже посерьёзнее', href: 'https://buhstart.ru/tpost/v8apys99t1-ooo-kogda-biznes-uzhe-posereznee' },
+    { tag: 'Бизнес', title: 'К чему по анализу движется малый бизнес', href: 'https://buhstart.ru/tpost/pfsocxuzz1-k-chemu-po-analizu-dvizhetsya-malii-bizn' },
+    { tag: 'ИП и ООО', title: 'Организационно-правовые формы бизнеса', href: 'https://buhstart.ru/tpost/lzmi0k9071-organizatsionno-pravovie-formi-biznesa' },
+    { tag: 'Налоги', title: 'Как выбрать систему налогообложения и не переплачивать', href: 'https://buhstart.ru/tpost/zh75d76pb1-kak-vibrat-sistemu-nalogooblozheniya-i-n' },
+    { tag: 'Бизнес', title: 'Сотрудник уволился и унёс базу клиентов', href: 'https://buhstart.ru/tpost/a7ih45m8d1-sotrudnik-uvolilsya-i-unyos-bazu-kliento' },
+    { tag: 'Бизнес', title: 'Проверка контрагента: все делают вид, что проверяют', href: 'https://buhstart.ru/tpost/ns7uvpbph1-proverka-kontragenta-vse-delayut-vid-cht' },
+    { tag: 'ИП и ООО', title: 'Закрыть ИП и открыть заново, чтобы сэкономить', href: 'https://buhstart.ru/tpost/umg846dgz1-zakrit-ip-i-otkrit-zanovo-chtobi-sekonom' },
+    { tag: 'Налоги', title: 'Вернуть 13% за курсы', href: 'https://buhstart.ru/tpost/dgjjc2cdj1-vernut-13-za-kursi' },
   ];
   renderVals() {
-    const names = ['Все', 'УСН', 'ОСНО', 'Кадры', 'ВЭД', 'Отчётность', 'Изменения закона'];
+    const names = ['Все', 'Налоги', 'Налоговая', 'Финансы', 'Бизнес', 'ИП и ООО'];
     return {
       tags: names.map(name => {
         const on = this.state.tag === name;

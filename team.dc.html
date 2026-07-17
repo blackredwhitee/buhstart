@@ -14,7 +14,7 @@
 <section style="max-width:1100px;margin:0 auto;padding:60px 24px 48px">
   <div style="font-size:13px;color:#6B6B6B;margin-bottom:16px"><a href="index.dc.html" style="color:#6B6B6B;text-decoration:none" style-hover="color:#F07828">Главная</a> / Команда</div>
   <h1 style="margin:0 0 14px;font-size:44px;font-weight:800;letter-spacing:-0.02em">Наша команда</h1>
-  <p style="margin:0;font-size:17px;color:#6B6B6B;max-width:560px;line-height:1.6">8 специалистов с опытом от 5 лет. С вами работают конкретные люди, а не «отдел сопровождения».</p>
+  <p style="margin:0;font-size:17px;color:#6B6B6B;max-width:560px;line-height:1.6">С вами работают конкретные люди, а не «отдел сопровождения». Компанией руководит Горелкина Галина Викторовна — <a href="https://t.me/Galina_Gor" style="color:#F07828;font-weight:600">написать ей лично</a>.</p>
 </section>
 
 <section style="max-width:1100px;margin:0 auto;padding:0 24px 72px">
@@ -24,13 +24,8 @@
         <x-import component-from-global-scope="image-slot" from="image-slot.js" id="{{ m.photoId }}" shape="rect" placeholder="Живое фото сотрудника" hint-size="100%,280px" style="width:100%;height:280px;display:block"></x-import>
         <div style="padding:20px 22px">
           <div style="font-size:18px;font-weight:600">{{ m.name }}</div>
-          <div style="font-size:13px;color:#6B6B6B;margin:4px 0 12px">{{ m.role }} · {{ m.exp }}</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
-            <sc-for list="{{ m.tags }}" as="t" hint-placeholder-count="2">
-              <span style="background:#F5F5F5;color:#3D3D3D;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px">{{ t }}</span>
-            </sc-for>
-          </div>
-          <div style="font-size:13px;color:#6B6B6B;line-height:1.6;font-style:italic">«{{ m.quote }}»</div>
+          <div style="font-size:13px;color:#6B6B6B;margin:4px 0 0">{{ m.role }}</div>
+          <div style="font-size:13px;color:#F07828;font-weight:600;margin-top:8px">{{ m.exp }}</div>
         </div>
       </div>
     </sc-for>
@@ -58,12 +53,14 @@ class Component extends DCLogic {
   renderVals() {
     return {
       team: [
-        { photoId: 'team-1', name: 'Елена Соколова', role: 'Главный бухгалтер', exp: '18 лет', tags: ['ОСНО', 'НДС', 'Аудит'], quote: 'Хорошая бухгалтерия — это когда собственник о ней не думает.' },
-        { photoId: 'team-2', name: 'Марина Ковалёва', role: 'Бухгалтер по ОСНО и НДС', exp: '12 лет', tags: ['ОСНО', 'НДС'], quote: 'НДС любит точность — я люблю НДС.' },
-        { photoId: 'team-3', name: 'Ольга Тарасова', role: 'Специалист по кадрам', exp: '9 лет', tags: ['Кадры', 'КЭДО'], quote: 'Правильно оформленный сотрудник — спокойный работодатель.' },
-        { photoId: 'team-4', name: 'Дмитрий Орлов', role: 'Налоговый консультант', exp: '14 лет', tags: ['Налоги', 'Проверки'], quote: 'Каждое требование ФНС — это диалог, который можно выиграть.' },
-        { photoId: 'team-5', name: 'Анна Белова', role: 'Бухгалтер по УСН', exp: '7 лет', tags: ['УСН', 'Патент'], quote: 'Упрощёнка проста, только когда её ведут правильно.' },
-        { photoId: 'team-6', name: 'Сергей Литвинов', role: 'Специалист по ВЭД', exp: '11 лет', tags: ['ВЭД', 'Валютный контроль'], quote: 'Валютный контроль прощает только тех, кто успевает в сроки.' },
+        { photoId: 'team-1', name: 'Горелкина Галина Викторовна', role: 'Руководитель компании', exp: '20+ лет опыта' },
+        { photoId: 'team-2', name: 'Самылова Ирина', role: 'Главный бухгалтер, аудитор', exp: 'В компании более 20 лет' },
+        { photoId: 'team-3', name: 'Тимофеева Юлия', role: 'Главный бухгалтер, аудитор, консультант', exp: 'В компании 3 года' },
+        { photoId: 'team-4', name: 'Анастасия Зайцева', role: 'Специалист по управленческому учёту', exp: 'Работает более 3 лет' },
+        { photoId: 'team-5', name: 'Инна Пысларь', role: 'Старший бухгалтер', exp: '' },
+        { photoId: 'team-6', name: 'Елена Велейшикова', role: 'Старший бухгалтер, специалист по управленческому учёту', exp: 'В компании более 1 года' },
+        { photoId: 'team-7', name: 'Диана Гаджигасова', role: 'Бухгалтер по первичной документации', exp: '' },
+        { photoId: 'team-8', name: 'Анна Сухоплечева', role: 'Бухгалтер по первичной документации', exp: '' },
       ],
     };
   }

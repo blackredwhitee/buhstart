@@ -21,7 +21,7 @@
       <a href="#zapis" style="text-decoration:none;border:1.5px solid #3D3D3D;color:#3D3D3D;font-weight:600;font-size:16px;height:52px;padding:0 26px;border-radius:6px;display:inline-flex;align-items:center;transition:all 120ms ease" style-hover="background:#3D3D3D;color:#fff">Записаться на консультацию</a>
     </div>
     <div style="display:flex;gap:32px;margin-top:44px;flex-wrap:wrap">
-      <div><div style="font-size:26px;font-weight:800;color:#F07828">23 года</div><div style="font-size:13px;color:#6B6B6B">на рынке</div></div>
+      <div><div style="font-size:26px;font-weight:800;color:#F07828">20+ лет</div><div style="font-size:13px;color:#6B6B6B">на рынке</div></div>
       <div><div style="font-size:26px;font-weight:800;color:#F07828">350+</div><div style="font-size:13px;color:#6B6B6B">клиентов</div></div>
       <div><div style="font-size:26px;font-weight:800;color:#F07828">2 часа</div><div style="font-size:13px;color:#6B6B6B">время ответа</div></div>
       <div><div style="font-size:26px;font-weight:800;color:#F07828">0 ₽</div><div style="font-size:13px;color:#6B6B6B">штрафов по нашей вине</div></div>
@@ -114,11 +114,9 @@
         </div>
       </sc-for>
     </div>
-    <div style="background:#F5F5F5;border:1px solid #E8E8E8;border-radius:10px;padding:28px;text-align:center">
-      <div style="font-size:56px;font-weight:800;color:#1A1A1A;line-height:1">4.9</div>
-      <div style="color:#F07828;font-size:18px;letter-spacing:3px;margin:8px 0">★★★★★</div>
-      <div style="font-size:13px;color:#6B6B6B;margin-bottom:18px">87 отзывов на Яндекс.Картах</div>
-      <a href="#" style="text-decoration:none;border:1.5px solid #3D3D3D;color:#3D3D3D;font-weight:600;font-size:14px;height:44px;padding:0 20px;border-radius:6px;display:inline-flex;align-items:center" style-hover="background:#3D3D3D;color:#fff">Все отзывы</a>
+    <div style="height:520px;overflow:hidden;position:relative">
+      <iframe src="https://yandex.ru/maps-reviews-widget/162739002915?comments" style="width:100%;height:100%;border:1px solid #E8E8E8;border-radius:10px;box-sizing:border-box" title="Отзывы на Яндекс Картах"></iframe>
+      <a href="https://yandex.ru/maps/org/doveritelnaya_bukhgalteriya/162739002915/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;padding:0 16px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap">Доверительная бухгалтерия на карте Москвы — Яндекс Карты</a>
     </div>
   </div>
 </section>
@@ -149,7 +147,7 @@
     <div style="color:#fff">
       <h2 style="margin:0 0 14px;font-size:36px;font-weight:800;letter-spacing:-0.02em">Запишитесь на бесплатную консультацию</h2>
       <p style="margin:0 0 24px;font-size:16px;line-height:1.65;color:rgba(255,255,255,0.7)">Разберём вашу ситуацию и предложим оптимальное решение. Без обязательств.</p>
-      <div style="font-size:14px;color:rgba(255,255,255,0.7)">Или напишите нам: <a href="#" style="color:#FF9A50;font-weight:600">Telegram</a> · <a href="#" style="color:#FF9A50;font-weight:600">WhatsApp</a> · <a href="tel:+74955070979" style="color:#FF9A50;font-weight:600">+7 (495) 507-09-79</a></div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.7)">Или напишите руководителю лично: <a href="https://t.me/Galina_Gor" style="color:#FF9A50;font-weight:600">Telegram</a> · <a href="#" style="color:#FF9A50;font-weight:600">WhatsApp</a> · <a href="tel:+74957788168" style="color:#FF9A50;font-weight:600">+7 (495) 778-81-68</a></div>
     </div>
     <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
       <div style="background:#fff;border-radius:12px;padding:48px 32px;text-align:center">
@@ -179,29 +177,29 @@ class Component extends DCLogic {
   renderVals() {
     return {
       services: [
-        { glyph: '₽', name: 'Бухгалтерское обслуживание', desc: 'Полное ведение учёта, отчётность в ФНС и фонды, банк-клиент.', href: 'usluga.dc.html?s=bukhgalterskoe-obsluzhivanie' },
-        { glyph: '%', name: 'Налоговое консультирование', desc: 'Оптимизация налогов, выбор системы, ответы на требования ФНС.', href: 'usluga.dc.html?s=nalogovoe-konsultirovanie' },
-        { glyph: 'К', name: 'Кадровый учёт', desc: 'Приём и увольнение, отпуска, больничные, воинский учёт.', href: 'usluga.dc.html?s=kadrovyi-uchet' },
-        { glyph: 'У', name: 'Управленческий учёт', desc: 'P&L, ДДС, платёжный календарь — цифры для решений.', href: 'usluga.dc.html?s=upravlencheskii-uchet' },
-        { glyph: 'В', name: 'ВЭД', desc: 'Валютный контроль, импорт/экспорт, работа с нерезидентами.', href: 'usluga.dc.html?s=ved' },
-        { glyph: 'Р', name: 'Регистрация и ликвидация', desc: 'Откроем ИП или ООО за 3 дня, закроем без долгов и штрафов.', href: 'usluga.dc.html?s=registraciya-i-likvidaciya' },
+        { glyph: '₽', name: 'Бухгалтерские услуги', desc: 'Полное ведение учёта и отчётности: АУСН, УСН, ОСНО, зарплата и кадры.', href: 'usluga.dc.html?s=bukhgalterskie-uslugi' },
+        { glyph: 'С', name: 'Бухгалтерская страховка', desc: 'Проверка отчётности, ответы налоговой и стратегические сессии.', href: 'usluga.dc.html?s=strahovka' },
+        { glyph: 'А', name: 'Аудит — чек-ап бизнеса', desc: 'Проверка отчётности и процессов: риски, ошибки, точки оптимизации.', href: 'usluga.dc.html?s=audit' },
+        { glyph: 'У', name: 'Управленческий учёт', desc: 'Себестоимость, P&L, ДДС — понимание, куда уходят деньги.', href: 'usluga.dc.html?s=upravlencheskii-uchet' },
+        { glyph: 'М', name: 'Бухгалтерия для маркетплейсов', desc: 'Учёт и налоги для селлеров с учётом специфики площадок.', href: 'usluga.dc.html?s=marketplace' },
+        { glyph: 'К', name: 'Все услуги', desc: 'Посмотрите полный список услуг и тарифов.', href: 'uslugi.dc.html' },
       ],
       teamTeaser: [
-        { photoId: 'team-1', name: 'Елена Соколова', role: 'Главный бухгалтер', exp: '18 лет опыта' },
-        { photoId: 'team-2', name: 'Марина Ковалёва', role: 'Бухгалтер по ОСНО и НДС', exp: '12 лет опыта' },
-        { photoId: 'team-3', name: 'Ольга Тарасова', role: 'Специалист по кадрам', exp: '9 лет опыта' },
-        { photoId: 'team-4', name: 'Дмитрий Орлов', role: 'Налоговый консультант', exp: '14 лет опыта' },
+        { photoId: 'team-1', name: 'Горелкина Галина Викторовна', role: 'Руководитель компании', exp: '20+ лет опыта' },
+        { photoId: 'team-2', name: 'Самылова Ирина', role: 'Главный бухгалтер, аудитор', exp: 'в компании более 20 лет' },
+        { photoId: 'team-3', name: 'Тимофеева Юлия', role: 'Главный бухгалтер, аудитор, консультант', exp: 'в компании 3 года' },
+        { photoId: 'team-4', name: 'Инна Пысларь', role: 'Старший бухгалтер', exp: '' },
       ],
       reviews: [
-        { initial: 'А', name: 'Андрей В.', date: 'Май 2026', text: 'Перешли с прошлой бухгалтерии год назад. Нашли переплату по УСН и вернули — уже окупили год обслуживания.' },
-        { initial: 'С', name: 'Светлана М.', date: 'Апрель 2026', text: 'Отвечают действительно быстро. Все требования ФНС закрывают сами, меня не дёргают по мелочам.' },
-        { initial: 'И', name: 'Игорь П.', date: 'Март 2026', text: 'Открывал ООО с их помощью — за 3 дня всё готово, сразу поставили учёт. Очень удобно, что всё удалённо.' },
-        { initial: 'Н', name: 'Наталья К.', date: 'Февраль 2026', text: 'Ведут наш ВЭД: валютный контроль, паспорта сделок. Ни одного штрафа за два года работы.' },
+        { initial: 'А', name: 'Александр Третьяков', date: 'ООО «ПФ АКТ»', text: 'Я спокойно занимаюсь бизнесом, а вы взяли на себя всю бумажную работу. Никакой головной боли.' },
+        { initial: 'Н', name: 'Комиссаров Николай', date: 'ООО «АТ-СИСТЕМА»', text: 'Меня всё устраивает в сотрудничестве с Галиной Викторовной. Планирую запускать новые интересные проекты, поэтому в дальнейшем планирую работать с профессионалом.' },
+        { initial: 'Т', name: 'Тимофей Семин', date: 'ОАО «Агат-аквариус»', text: 'Спасибо вашей компании, я даже не знал, что бухгалтерия может быть такой — ориентированной на бизнес.' },
+        { initial: 'Н', name: 'Наталья Новикова', date: '', text: 'Сотрудничаем с Галиной с 2022 года, помогла уже с решением нескольких сложных задач, провели аудит в нашей компании, дали рекомендации. Однозначно, рекомендую.' },
       ],
       articlesTeaser: [
-        { href: 'article.dc.html', cover: '#3D3D3D', glyph: 'УСН', tag: 'УСН', title: 'УСН в 2026 году: лимиты, ставки и что изменилось', date: '10 июля 2026', read: '7 мин' },
-        { href: 'article.dc.html', cover: '#F07828', glyph: 'НДС', tag: 'ОСНО', title: 'НДС 22%: как подготовиться к новой ставке', date: '2 июля 2026', read: '5 мин' },
-        { href: 'article.dc.html', cover: '#6B6B6B', glyph: 'ВЭД', tag: 'ВЭД', title: 'Валютный контроль для ИП: пошаговая инструкция', date: '24 июня 2026', read: '9 мин' },
+        { href: 'https://buhstart.ru/tpost/cnye6z2of1-kak-nalogovaya-vidit-vash-biznes', cover: '#3D3D3D', glyph: 'ФНС', tag: 'Налоговая', title: 'Как налоговая видит ваш бизнес', date: 'buhstart.ru', read: 'читать' },
+        { href: 'https://buhstart.ru/tpost/918933y7o1-chto-delat-esli-prishlo-pismo-iz-fns', cover: '#F07828', glyph: '✉', tag: 'Налоговая', title: 'Что делать, если пришло письмо из ФНС', date: 'buhstart.ru', read: 'читать' },
+        { href: 'https://buhstart.ru/tpost/10sx017v61-kuda-utekayut-dengi-v-biznese', cover: '#6B6B6B', glyph: '₽', tag: 'Финансы', title: 'Куда утекают деньги в бизнесе', date: 'buhstart.ru', read: 'читать' },
       ],
       formSent: this.state.sent, formNotSent: !this.state.sent,
       formName: this.state.name, formPhone: this.state.phone, formTime: this.state.time,
